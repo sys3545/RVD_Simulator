@@ -1,4 +1,5 @@
 # RVD_Simulator
    
 # Versions   
-2021 10 25 - 
+Released version 0.0.1 (2021 10 25) :   
+basic GUI   
