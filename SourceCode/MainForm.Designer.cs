@@ -38,7 +38,7 @@ namespace RVD_Simulation
             this.dateTimePicker_Start = new System.Windows.Forms.DateTimePicker();
             this.labelUTC2 = new System.Windows.Forms.Label();
             this.labelUTC1 = new System.Windows.Forms.Label();
-            this.gBoxResult = new System.Windows.Forms.GroupBox();
+            this.gBoxStatus = new System.Windows.Forms.GroupBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.FileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.gBoxTime.SuspendLayout();
@@ -52,10 +52,10 @@ namespace RVD_Simulation
             this.gboxTrajectory.ForeColor = System.Drawing.SystemColors.ControlText;
             this.gboxTrajectory.Location = new System.Drawing.Point(12, 38);
             this.gboxTrajectory.Name = "gboxTrajectory";
-            this.gboxTrajectory.Size = new System.Drawing.Size(1020, 734);
+            this.gboxTrajectory.Size = new System.Drawing.Size(1047, 734);
             this.gboxTrajectory.TabIndex = 0;
             this.gboxTrajectory.TabStop = false;
-            this.gboxTrajectory.Text = "Trajectory";
+            this.gboxTrajectory.Text = "Trajectories";
             // 
             // gBoxTime
             // 
@@ -70,14 +70,14 @@ namespace RVD_Simulation
             this.gBoxTime.ForeColor = System.Drawing.SystemColors.ControlText;
             this.gBoxTime.Location = new System.Drawing.Point(1077, 38);
             this.gBoxTime.Name = "gBoxTime";
-            this.gBoxTime.Size = new System.Drawing.Size(571, 268);
+            this.gBoxTime.Size = new System.Drawing.Size(571, 224);
             this.gBoxTime.TabIndex = 1;
             this.gBoxTime.TabStop = false;
             this.gBoxTime.Text = "Time";
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(45, 182);
+            this.trackBar1.Location = new System.Drawing.Point(50, 171);
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(485, 45);
             this.trackBar1.TabIndex = 6;
@@ -85,81 +85,81 @@ namespace RVD_Simulation
             // labelEnd
             // 
             this.labelEnd.AutoSize = true;
-            this.labelEnd.Font = new System.Drawing.Font("돋움", 17.81443F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelEnd.Font = new System.Drawing.Font("돋움", 16.3299F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelEnd.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelEnd.Location = new System.Drawing.Point(52, 125);
+            this.labelEnd.Location = new System.Drawing.Point(68, 126);
             this.labelEnd.Name = "labelEnd";
-            this.labelEnd.Size = new System.Drawing.Size(106, 24);
+            this.labelEnd.Size = new System.Drawing.Size(95, 23);
             this.labelEnd.TabIndex = 5;
             this.labelEnd.Text = "End Time";
             // 
             // labelStart
             // 
             this.labelStart.AutoSize = true;
-            this.labelStart.Font = new System.Drawing.Font("돋움", 17.81443F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelStart.Font = new System.Drawing.Font("돋움", 16.3299F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelStart.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelStart.Location = new System.Drawing.Point(45, 70);
+            this.labelStart.Location = new System.Drawing.Point(62, 70);
             this.labelStart.Name = "labelStart";
-            this.labelStart.Size = new System.Drawing.Size(117, 24);
+            this.labelStart.Size = new System.Drawing.Size(103, 23);
             this.labelStart.TabIndex = 4;
             this.labelStart.Text = "Start Time";
             // 
             // dateTimePicker_End
             // 
             this.dateTimePicker_End.CalendarFont = new System.Drawing.Font("돋움", 17.81443F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker_End.CustomFormat = "yyy/MM/dd HH:mm:ss";
+            this.dateTimePicker_End.CustomFormat = " yyy/MM/dd HH:mm:ss";
             this.dateTimePicker_End.Enabled = false;
-            this.dateTimePicker_End.Font = new System.Drawing.Font("돋움", 17.81443F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker_End.Font = new System.Drawing.Font("돋움", 16.3299F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker_End.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_End.Location = new System.Drawing.Point(186, 119);
             this.dateTimePicker_End.Name = "dateTimePicker_End";
-            this.dateTimePicker_End.Size = new System.Drawing.Size(281, 35);
+            this.dateTimePicker_End.Size = new System.Drawing.Size(281, 33);
             this.dateTimePicker_End.TabIndex = 3;
             // 
             // dateTimePicker_Start
             // 
-            this.dateTimePicker_Start.CalendarFont = new System.Drawing.Font("돋움", 17.81443F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker_Start.CustomFormat = "yyy/MM/dd HH:mm:ss";
+            this.dateTimePicker_Start.CalendarFont = new System.Drawing.Font("돋움", 16.3299F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker_Start.CustomFormat = " yyy/MM/dd HH:mm:ss";
             this.dateTimePicker_Start.Enabled = false;
-            this.dateTimePicker_Start.Font = new System.Drawing.Font("돋움", 17.81443F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker_Start.Font = new System.Drawing.Font("돋움", 16.3299F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker_Start.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_Start.Location = new System.Drawing.Point(186, 63);
             this.dateTimePicker_Start.Name = "dateTimePicker_Start";
-            this.dateTimePicker_Start.Size = new System.Drawing.Size(281, 35);
+            this.dateTimePicker_Start.Size = new System.Drawing.Size(281, 33);
             this.dateTimePicker_Start.TabIndex = 2;
             // 
             // labelUTC2
             // 
             this.labelUTC2.AutoSize = true;
-            this.labelUTC2.Font = new System.Drawing.Font("돋움", 17.81443F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelUTC2.Font = new System.Drawing.Font("돋움", 16.3299F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelUTC2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelUTC2.Location = new System.Drawing.Point(476, 126);
+            this.labelUTC2.Location = new System.Drawing.Point(476, 125);
             this.labelUTC2.Name = "labelUTC2";
-            this.labelUTC2.Size = new System.Drawing.Size(54, 24);
+            this.labelUTC2.Size = new System.Drawing.Size(49, 23);
             this.labelUTC2.TabIndex = 1;
             this.labelUTC2.Text = "UTC";
             // 
             // labelUTC1
             // 
             this.labelUTC1.AutoSize = true;
-            this.labelUTC1.Font = new System.Drawing.Font("돋움", 17.81443F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelUTC1.Font = new System.Drawing.Font("돋움", 16.3299F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelUTC1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelUTC1.Location = new System.Drawing.Point(476, 70);
+            this.labelUTC1.Location = new System.Drawing.Point(476, 69);
             this.labelUTC1.Name = "labelUTC1";
-            this.labelUTC1.Size = new System.Drawing.Size(54, 24);
+            this.labelUTC1.Size = new System.Drawing.Size(49, 23);
             this.labelUTC1.TabIndex = 0;
             this.labelUTC1.Text = "UTC";
             // 
-            // gBoxResult
+            // gBoxStatus
             // 
-            this.gBoxResult.Font = new System.Drawing.Font("맑은 고딕", 22.26804F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.gBoxResult.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.gBoxResult.Location = new System.Drawing.Point(1077, 322);
-            this.gBoxResult.Name = "gBoxResult";
-            this.gBoxResult.Size = new System.Drawing.Size(572, 450);
-            this.gBoxResult.TabIndex = 2;
-            this.gBoxResult.TabStop = false;
-            this.gBoxResult.Text = "Result";
+            this.gBoxStatus.Font = new System.Drawing.Font("맑은 고딕", 22.26804F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.gBoxStatus.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.gBoxStatus.Location = new System.Drawing.Point(1077, 268);
+            this.gBoxStatus.Name = "gBoxStatus";
+            this.gBoxStatus.Size = new System.Drawing.Size(572, 504);
+            this.gBoxStatus.TabIndex = 2;
+            this.gBoxStatus.TabStop = false;
+            this.gBoxStatus.Text = "Satellite Status";
             // 
             // menuStrip1
             // 
@@ -183,7 +183,7 @@ namespace RVD_Simulation
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1700, 850);
-            this.Controls.Add(this.gBoxResult);
+            this.Controls.Add(this.gBoxStatus);
             this.Controls.Add(this.gBoxTime);
             this.Controls.Add(this.gboxTrajectory);
             this.Controls.Add(this.menuStrip1);
@@ -211,7 +211,7 @@ namespace RVD_Simulation
         private System.Windows.Forms.Label labelStart;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label labelEnd;
-        private System.Windows.Forms.GroupBox gBoxResult;
+        private System.Windows.Forms.GroupBox gBoxStatus;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem FileMenu;
     }
