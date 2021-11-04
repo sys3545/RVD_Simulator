@@ -81,7 +81,7 @@ namespace RVD_Simulation
             this.tBoxMass_Chaser = new System.Windows.Forms.TextBox();
             this.labelMass_Chaser = new System.Windows.Forms.Label();
             this.gBoxRelPOSVEL = new System.Windows.Forms.GroupBox();
-            this.tBoxXrel = new System.Windows.Forms.TextBox();
+            this.tBoxXRel = new System.Windows.Forms.TextBox();
             this.labelXRel = new System.Windows.Forms.Label();
             this.labelM6 = new System.Windows.Forms.Label();
             this.labelYRel = new System.Windows.Forms.Label();
@@ -231,7 +231,7 @@ namespace RVD_Simulation
             // 
             this.labelKG_Target.AutoSize = true;
             this.labelKG_Target.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelKG_Target.Location = new System.Drawing.Point(215, 140);
+            this.labelKG_Target.Location = new System.Drawing.Point(215, 137);
             this.labelKG_Target.Name = "labelKG_Target";
             this.labelKG_Target.Size = new System.Drawing.Size(28, 19);
             this.labelKG_Target.TabIndex = 30;
@@ -245,6 +245,7 @@ namespace RVD_Simulation
             this.tBoxMass.Size = new System.Drawing.Size(119, 29);
             this.tBoxMass.TabIndex = 29;
             this.tBoxMass.Text = "10";
+            this.tBoxMass.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelMass
             // 
@@ -285,6 +286,7 @@ namespace RVD_Simulation
             this.tBoxName.Name = "tBoxName";
             this.tBoxName.Size = new System.Drawing.Size(119, 29);
             this.tBoxName.TabIndex = 25;
+            this.tBoxName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelName
             // 
@@ -643,7 +645,7 @@ namespace RVD_Simulation
             // 
             // gBoxRelPOSVEL
             // 
-            this.gBoxRelPOSVEL.Controls.Add(this.tBoxXrel);
+            this.gBoxRelPOSVEL.Controls.Add(this.tBoxXRel);
             this.gBoxRelPOSVEL.Controls.Add(this.labelXRel);
             this.gBoxRelPOSVEL.Controls.Add(this.labelM6);
             this.gBoxRelPOSVEL.Controls.Add(this.labelYRel);
@@ -668,15 +670,15 @@ namespace RVD_Simulation
             this.gBoxRelPOSVEL.TabStop = false;
             this.gBoxRelPOSVEL.Text = "Relative Position, Velocity";
             // 
-            // tBoxXrel
+            // tBoxXRel
             // 
-            this.tBoxXrel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxXrel.Location = new System.Drawing.Point(148, 49);
-            this.tBoxXrel.Name = "tBoxXrel";
-            this.tBoxXrel.Size = new System.Drawing.Size(119, 29);
-            this.tBoxXrel.TabIndex = 5;
-            this.tBoxXrel.Text = "6524.834";
-            this.tBoxXrel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tBoxXRel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tBoxXRel.Location = new System.Drawing.Point(148, 49);
+            this.tBoxXRel.Name = "tBoxXRel";
+            this.tBoxXRel.Size = new System.Drawing.Size(119, 29);
+            this.tBoxXRel.TabIndex = 5;
+            this.tBoxXRel.Text = "0";
+            this.tBoxXRel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelXRel
             // 
@@ -725,7 +727,7 @@ namespace RVD_Simulation
             this.tBoxYRel.Name = "tBoxYRel";
             this.tBoxYRel.Size = new System.Drawing.Size(119, 29);
             this.tBoxYRel.TabIndex = 7;
-            this.tBoxYRel.Text = "6862.875";
+            this.tBoxYRel.Text = "0";
             this.tBoxYRel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelM4
@@ -765,7 +767,7 @@ namespace RVD_Simulation
             this.tBoxZRel.Name = "tBoxZRel";
             this.tBoxZRel.Size = new System.Drawing.Size(119, 29);
             this.tBoxZRel.TabIndex = 9;
-            this.tBoxZRel.Text = "6448.296";
+            this.tBoxZRel.Text = "0";
             this.tBoxZRel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelM2
@@ -805,7 +807,7 @@ namespace RVD_Simulation
             this.tBoxXvelRel.Name = "tBoxXvelRel";
             this.tBoxXvelRel.Size = new System.Drawing.Size(119, 29);
             this.tBoxXvelRel.TabIndex = 11;
-            this.tBoxXvelRel.Text = "4.901327";
+            this.tBoxXvelRel.Text = "0";
             this.tBoxXvelRel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tBoxZvelRel
@@ -815,7 +817,7 @@ namespace RVD_Simulation
             this.tBoxZvelRel.Name = "tBoxZvelRel";
             this.tBoxZvelRel.Size = new System.Drawing.Size(119, 29);
             this.tBoxZvelRel.TabIndex = 15;
-            this.tBoxZvelRel.Text = "-1.976341";
+            this.tBoxZvelRel.Text = "0";
             this.tBoxZvelRel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelYVelRel
@@ -845,7 +847,7 @@ namespace RVD_Simulation
             this.tBoxYvelRel.Name = "tBoxYvelRel";
             this.tBoxYvelRel.Size = new System.Drawing.Size(119, 29);
             this.tBoxYvelRel.TabIndex = 13;
-            this.tBoxYvelRel.Text = "5.533756";
+            this.tBoxYvelRel.Text = "0";
             this.tBoxYvelRel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // gBoxDisturbanceChaser
@@ -1038,7 +1040,7 @@ namespace RVD_Simulation
         private System.Windows.Forms.Label labelZRel;
         private System.Windows.Forms.TextBox tBoxYRel;
         private System.Windows.Forms.Label labelYRel;
-        private System.Windows.Forms.TextBox tBoxXrel;
+        private System.Windows.Forms.TextBox tBoxXRel;
         private System.Windows.Forms.Label labelXRel;
         private System.Windows.Forms.GroupBox gBoxDisturbanceChaser;
         private System.Windows.Forms.GroupBox gBoxRelPOSVEL;

@@ -90,17 +90,33 @@ namespace RVD_Simulation
         private void btnStart_Click(object sender, EventArgs e) // 시뮬레이션 시작버튼
         {
             double diff; // 시간차이
-            int SelectNum; // 선택된 타겟번호          
+            int SelectNum; // 선택된 타겟번호
+            double x0; double y0; double z0; double vx0; double vy0; double vz0;
 
-            
+
             // 시간차이 구하기
             diff = Calculator.FindDiffTime(dateTimePicker_StartSimul.Value, dateTimePicker_EndSimul.Value);
 
             // 선택된 타겟 가져오기
             SelectNum = Convert.ToInt32(tBoxTgtNum.Text);
-          
+
+            // 초기 상대 값 가져오기
+            x0 = Convert.ToDouble(tBoxXRel.Text);
+            y0 = Convert.ToDouble(tBoxYRel.Text);
+            z0 = Convert.ToDouble(tBoxZRel.Text);
+            vx0 = Convert.ToDouble(tBoxXvelRel.Text);
+            vy0 = Convert.ToDouble(tBoxYvelRel.Text);
+            vz0 = Convert.ToDouble(tBoxZvelRel.Text);
+
             // 시뮬레이션 시작
-            SimulationForm.Simulation(SAT[SelectNum].angleVel, dateTimePicker_StartSimul.Value, dateTimePicker_EndSimul.Value, diff);
+            if (diff > 0)
+            {
+                SimulationForm.Simulation(x0, y0, z0, vx0, vy0, vz0, SAT[SelectNum].angleVel, dateTimePicker_StartSimul.Value, dateTimePicker_EndSimul.Value, diff);
+            }
+            else
+            {
+                MessageBox.Show("시뮬레이션 시간이 너무 짧습니다.");
+            }
         }
     }
 
