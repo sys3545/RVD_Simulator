@@ -41,7 +41,7 @@ namespace RVD_Simulation
 
         void SetInitialColumn() // Satellite List 폼 객체의 컬럼 초기 설정
         {
-            dataGridView_SAT.ColumnCount = 9; // 컬럼에 나타낼 데이터 수
+            dataGridView_SAT.ColumnCount = 10; // 컬럼에 나타낼 데이터 수
             dataGridView_SAT.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 14, FontStyle.Bold); // 컬럼헤더 폰트
             dataGridView_SAT.DefaultCellStyle.Font = new Font("맑은 고딕", 14); // 내용부분 폰트           
         }
@@ -71,7 +71,7 @@ namespace RVD_Simulation
 
                 // Satellite List에 추가
                 string[] newOne = { Convert.ToString(SAT[NumOfSat].number), SAT[NumOfSat].name, Convert.ToString(SAT[NumOfSat].a),Convert.ToString(SAT[NumOfSat].e),
-                Convert.ToString(SAT[NumOfSat].i), Convert.ToString(SAT[NumOfSat].RAAN), Convert.ToString(SAT[NumOfSat].w), Convert.ToString(SAT[NumOfSat].TA), Convert.ToString(SAT[NumOfSat].epoch)};
+                Convert.ToString(SAT[NumOfSat].i), Convert.ToString(SAT[NumOfSat].RAAN), Convert.ToString(SAT[NumOfSat].w), Convert.ToString(SAT[NumOfSat].TA), Convert.ToString(SAT[NumOfSat].period), Convert.ToString(SAT[NumOfSat].epoch)};
                 dataGridView_SAT.Rows.Add(newOne);
 
                 tBoxTest.Text = Convert.ToString(SAT[NumOfSat].period);  /////////////////////////////////////////////테스트 출력

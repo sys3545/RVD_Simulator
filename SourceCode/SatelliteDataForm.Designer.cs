@@ -39,6 +39,7 @@ namespace RVD_Simulation
             this.Col_RAAN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_w = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_TA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_Period = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Epoch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gBoxAddSAT = new System.Windows.Forms.GroupBox();
             this.labelKG_Target = new System.Windows.Forms.Label();
@@ -142,6 +143,7 @@ namespace RVD_Simulation
             this.Col_RAAN,
             this.Col_w,
             this.Col_TA,
+            this.Col_Period,
             this.Col_Epoch});
             this.dataGridView_SAT.Location = new System.Drawing.Point(21, 46);
             this.dataGridView_SAT.Name = "dataGridView_SAT";
@@ -197,6 +199,12 @@ namespace RVD_Simulation
             this.Col_TA.HeaderText = "TA(deg)";
             this.Col_TA.Name = "Col_TA";
             this.Col_TA.Width = 149;
+            // 
+            // Col_Period
+            // 
+            this.Col_Period.HeaderText = "Period(sec)";
+            this.Col_Period.Name = "Col_Period";
+            this.Col_Period.Width = 191;
             // 
             // Col_Epoch
             // 
@@ -286,7 +294,8 @@ namespace RVD_Simulation
             this.tBoxName.Name = "tBoxName";
             this.tBoxName.Size = new System.Drawing.Size(119, 29);
             this.tBoxName.TabIndex = 25;
-            this.tBoxName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tBoxName.Text = "SNIPE";
+            this.tBoxName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelName
             // 
@@ -393,7 +402,7 @@ namespace RVD_Simulation
             this.tBoxZvel.Name = "tBoxZvel";
             this.tBoxZvel.Size = new System.Drawing.Size(119, 29);
             this.tBoxZvel.TabIndex = 15;
-            this.tBoxZvel.Text = "-1.976341";
+            this.tBoxZvel.Text = "5.54422";
             this.tBoxZvel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelZvel
@@ -413,7 +422,7 @@ namespace RVD_Simulation
             this.tBoxYvel.Name = "tBoxYvel";
             this.tBoxYvel.Size = new System.Drawing.Size(119, 29);
             this.tBoxYvel.TabIndex = 13;
-            this.tBoxYvel.Text = "5.533756";
+            this.tBoxYvel.Text = "5.544422";
             this.tBoxYvel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelYvel
@@ -433,7 +442,7 @@ namespace RVD_Simulation
             this.tBoxXvel.Name = "tBoxXvel";
             this.tBoxXvel.Size = new System.Drawing.Size(119, 29);
             this.tBoxXvel.TabIndex = 11;
-            this.tBoxXvel.Text = "4.901327";
+            this.tBoxXvel.Text = "0";
             this.tBoxXvel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelXvel
@@ -453,7 +462,7 @@ namespace RVD_Simulation
             this.tBoxZ.Name = "tBoxZ";
             this.tBoxZ.Size = new System.Drawing.Size(119, 29);
             this.tBoxZ.TabIndex = 9;
-            this.tBoxZ.Text = "6448.296";
+            this.tBoxZ.Text = "0";
             this.tBoxZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelZ
@@ -473,7 +482,7 @@ namespace RVD_Simulation
             this.tBoxY.Name = "tBoxY";
             this.tBoxY.Size = new System.Drawing.Size(119, 29);
             this.tBoxY.TabIndex = 7;
-            this.tBoxY.Text = "6862.875";
+            this.tBoxY.Text = "0";
             this.tBoxY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelY
@@ -493,7 +502,7 @@ namespace RVD_Simulation
             this.tBoxX.Name = "tBoxX";
             this.tBoxX.Size = new System.Drawing.Size(119, 29);
             this.tBoxX.TabIndex = 5;
-            this.tBoxX.Text = "6524.834";
+            this.tBoxX.Text = "6751.02";
             this.tBoxX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelX
@@ -600,10 +609,11 @@ namespace RVD_Simulation
             // tBoxTgtNum
             // 
             this.tBoxTgtNum.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxTgtNum.Location = new System.Drawing.Point(573, 44);
+            this.tBoxTgtNum.Location = new System.Drawing.Point(506, 44);
             this.tBoxTgtNum.Name = "tBoxTgtNum";
             this.tBoxTgtNum.Size = new System.Drawing.Size(119, 29);
             this.tBoxTgtNum.TabIndex = 34;
+            this.tBoxTgtNum.Text = "1";
             // 
             // labelTGTSAT
             // 
@@ -611,9 +621,9 @@ namespace RVD_Simulation
             this.labelTGTSAT.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelTGTSAT.Location = new System.Drawing.Point(372, 50);
             this.labelTGTSAT.Name = "labelTGTSAT";
-            this.labelTGTSAT.Size = new System.Drawing.Size(190, 19);
+            this.labelTGTSAT.Size = new System.Drawing.Size(125, 19);
             this.labelTGTSAT.TabIndex = 32;
-            this.labelTGTSAT.Text = "Target Satellite Number";
+            this.labelTGTSAT.Text = "Target Number";
             // 
             // labelKg_Chaser
             // 
@@ -1011,15 +1021,6 @@ namespace RVD_Simulation
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.DateTimePicker dateTimePicker_Epoch;
         private System.Windows.Forms.Label labelEpoch;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Number;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Col_a;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Col_e;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Col_i;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Col_RAAN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Col_w;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Col_TA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Epoch;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Label labelMass;
         private System.Windows.Forms.TextBox tBoxMass;
@@ -1051,5 +1052,15 @@ namespace RVD_Simulation
         private System.Windows.Forms.TextBox tBoxMass_Chaser;
         private System.Windows.Forms.Label labelMass_Chaser;
         private System.Windows.Forms.GroupBox gBoxManeuver;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Number;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_a;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_e;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_i;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_RAAN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_w;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_TA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Period;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Epoch;
     }
 }

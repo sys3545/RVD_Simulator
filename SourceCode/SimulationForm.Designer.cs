@@ -30,9 +30,12 @@ namespace RVD_Simulation
         private void InitializeComponent()
         {
             this.gboxTrajectory = new System.Windows.Forms.GroupBox();
+            this.btn3DView = new System.Windows.Forms.Button();
+            this.btn2DView = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.pictureBoxSimul = new System.Windows.Forms.PictureBox();
             this.gBoxTime = new System.Windows.Forms.GroupBox();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.trackBarTime = new System.Windows.Forms.TrackBar();
             this.labelEnd = new System.Windows.Forms.Label();
             this.labelStart = new System.Windows.Forms.Label();
             this.dateTimePicker_End = new System.Windows.Forms.DateTimePicker();
@@ -46,13 +49,16 @@ namespace RVD_Simulation
             this.gboxTrajectory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSimul)).BeginInit();
             this.gBoxTime.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarTime)).BeginInit();
             this.gBoxStatus.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gboxTrajectory
             // 
+            this.gboxTrajectory.Controls.Add(this.btn3DView);
+            this.gboxTrajectory.Controls.Add(this.btn2DView);
+            this.gboxTrajectory.Controls.Add(this.btnRefresh);
             this.gboxTrajectory.Controls.Add(this.pictureBoxSimul);
             this.gboxTrajectory.Font = new System.Drawing.Font("맑은 고딕", 22.26804F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.gboxTrajectory.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -62,6 +68,39 @@ namespace RVD_Simulation
             this.gboxTrajectory.TabIndex = 0;
             this.gboxTrajectory.TabStop = false;
             this.gboxTrajectory.Text = "Trajectories";
+            // 
+            // btn3DView
+            // 
+            this.btn3DView.Font = new System.Drawing.Font("맑은 고딕", 13.36082F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn3DView.Location = new System.Drawing.Point(404, 27);
+            this.btn3DView.Name = "btn3DView";
+            this.btn3DView.Size = new System.Drawing.Size(98, 32);
+            this.btn3DView.TabIndex = 7;
+            this.btn3DView.Text = "3D View";
+            this.btn3DView.UseVisualStyleBackColor = true;
+            this.btn3DView.Click += new System.EventHandler(this.btn3DView_Click);
+            // 
+            // btn2DView
+            // 
+            this.btn2DView.Font = new System.Drawing.Font("맑은 고딕", 13.36082F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn2DView.Location = new System.Drawing.Point(288, 27);
+            this.btn2DView.Name = "btn2DView";
+            this.btn2DView.Size = new System.Drawing.Size(98, 32);
+            this.btn2DView.TabIndex = 6;
+            this.btn2DView.Text = "2D View";
+            this.btn2DView.UseVisualStyleBackColor = true;
+            this.btn2DView.Click += new System.EventHandler(this.btn2DView_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Font = new System.Drawing.Font("맑은 고딕", 13.36082F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnRefresh.Location = new System.Drawing.Point(182, 27);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(89, 32);
+            this.btnRefresh.TabIndex = 5;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // pictureBoxSimul
             // 
@@ -73,7 +112,7 @@ namespace RVD_Simulation
             // 
             // gBoxTime
             // 
-            this.gBoxTime.Controls.Add(this.trackBar1);
+            this.gBoxTime.Controls.Add(this.trackBarTime);
             this.gBoxTime.Controls.Add(this.labelEnd);
             this.gBoxTime.Controls.Add(this.labelStart);
             this.gBoxTime.Controls.Add(this.dateTimePicker_End);
@@ -89,12 +128,13 @@ namespace RVD_Simulation
             this.gBoxTime.TabStop = false;
             this.gBoxTime.Text = "Time";
             // 
-            // trackBar1
+            // trackBarTime
             // 
-            this.trackBar1.Location = new System.Drawing.Point(50, 171);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(485, 45);
-            this.trackBar1.TabIndex = 6;
+            this.trackBarTime.Location = new System.Drawing.Point(50, 171);
+            this.trackBarTime.Name = "trackBarTime";
+            this.trackBarTime.Size = new System.Drawing.Size(485, 45);
+            this.trackBarTime.TabIndex = 6;
+            this.trackBarTime.ValueChanged += new System.EventHandler(this.trackBarTime_ValueChanged);
             // 
             // labelEnd
             // 
@@ -218,7 +258,7 @@ namespace RVD_Simulation
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSimul)).EndInit();
             this.gBoxTime.ResumeLayout(false);
             this.gBoxTime.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarTime)).EndInit();
             this.gBoxStatus.ResumeLayout(false);
             this.gBoxStatus.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -237,13 +277,16 @@ namespace RVD_Simulation
         private System.Windows.Forms.DateTimePicker dateTimePicker_Start;
         private System.Windows.Forms.DateTimePicker dateTimePicker_End;
         private System.Windows.Forms.Label labelStart;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar trackBarTime;
         private System.Windows.Forms.Label labelEnd;
         private System.Windows.Forms.GroupBox gBoxStatus;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem FileMenu;
         private System.Windows.Forms.TextBox tBox_TESTMAIN;
         private System.Windows.Forms.PictureBox pictureBoxSimul;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btn2DView;
+        private System.Windows.Forms.Button btn3DView;
     }
 }
 
