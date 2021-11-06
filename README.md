@@ -19,6 +19,8 @@ Released version 0.0.4 (2021 11 04) :
 CW equation and plotting fuction in matlab can be called from c# GUI.   
    
     
-    
 Released version 0.1.0 (2021 11 05) :   
-matlab plotting problem has been solved.
+matlab plotting problem has been solved.   
+   
+Released version 0.1.1 (2021 11 06) :   
+maneuver adding methods are programming.   
