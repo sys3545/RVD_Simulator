@@ -15,5 +15,10 @@ Now, We can communicate between 2 forms.
 Matlab apllication has been updated.   
    
    
-Released version 0.04 (2021 11 04) :   
+Released version 0.0.4 (2021 11 04) :   
 CW equation and plotting fuction in matlab can be called from c# GUI.   
+   
+    
+    
+Released version 0.1.0 (2021 11 05) :   
+matlab plotting problem has been solved.
