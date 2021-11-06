@@ -75,6 +75,14 @@ namespace RVD_Simulation
             this.gBoxDisturbanceTarget = new System.Windows.Forms.GroupBox();
             this.gBoxSimulation = new System.Windows.Forms.GroupBox();
             this.gBoxManeuver = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnManeuverDel = new System.Windows.Forms.Button();
+            this.btnManeuverAdd = new System.Windows.Forms.Button();
+            this.dataGridView_Maneuver = new System.Windows.Forms.DataGridView();
+            this.Col_Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_vx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_vy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_vz = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gBoxChaser = new System.Windows.Forms.GroupBox();
             this.tBoxTgtNum = new System.Windows.Forms.TextBox();
             this.labelTGTSAT = new System.Windows.Forms.Label();
@@ -113,6 +121,8 @@ namespace RVD_Simulation
             this.gBoxAddSAT.SuspendLayout();
             this.gBoxPosVel.SuspendLayout();
             this.gBoxSimulation.SuspendLayout();
+            this.gBoxManeuver.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Maneuver)).BeginInit();
             this.gBoxChaser.SuspendLayout();
             this.gBoxRelPOSVEL.SuspendLayout();
             this.gBoxTime2.SuspendLayout();
@@ -252,7 +262,7 @@ namespace RVD_Simulation
             this.tBoxMass.Name = "tBoxMass";
             this.tBoxMass.Size = new System.Drawing.Size(119, 29);
             this.tBoxMass.TabIndex = 29;
-            this.tBoxMass.Text = "10";
+            this.tBoxMass.Text = "45000";
             this.tBoxMass.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelMass
@@ -286,6 +296,7 @@ namespace RVD_Simulation
             this.dateTimePicker_Epoch.ShowUpDown = true;
             this.dateTimePicker_Epoch.Size = new System.Drawing.Size(227, 29);
             this.dateTimePicker_Epoch.TabIndex = 26;
+            this.dateTimePicker_Epoch.Value = new System.DateTime(2021, 11, 5, 3, 0, 0, 0);
             // 
             // tBoxName
             // 
@@ -294,7 +305,7 @@ namespace RVD_Simulation
             this.tBoxName.Name = "tBoxName";
             this.tBoxName.Size = new System.Drawing.Size(119, 29);
             this.tBoxName.TabIndex = 25;
-            this.tBoxName.Text = "SNIPE";
+            this.tBoxName.Text = "ISS";
             this.tBoxName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelName
@@ -402,7 +413,7 @@ namespace RVD_Simulation
             this.tBoxZvel.Name = "tBoxZvel";
             this.tBoxZvel.Size = new System.Drawing.Size(119, 29);
             this.tBoxZvel.TabIndex = 15;
-            this.tBoxZvel.Text = "5.54422";
+            this.tBoxZvel.Text = "2.085344";
             this.tBoxZvel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelZvel
@@ -422,7 +433,7 @@ namespace RVD_Simulation
             this.tBoxYvel.Name = "tBoxYvel";
             this.tBoxYvel.Size = new System.Drawing.Size(119, 29);
             this.tBoxYvel.TabIndex = 13;
-            this.tBoxYvel.Text = "5.544422";
+            this.tBoxYvel.Text = "2.345939";
             this.tBoxYvel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelYvel
@@ -442,7 +453,7 @@ namespace RVD_Simulation
             this.tBoxXvel.Name = "tBoxXvel";
             this.tBoxXvel.Size = new System.Drawing.Size(119, 29);
             this.tBoxXvel.TabIndex = 11;
-            this.tBoxXvel.Text = "0";
+            this.tBoxXvel.Text = "6.975133";
             this.tBoxXvel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelXvel
@@ -462,7 +473,7 @@ namespace RVD_Simulation
             this.tBoxZ.Name = "tBoxZ";
             this.tBoxZ.Size = new System.Drawing.Size(119, 29);
             this.tBoxZ.TabIndex = 9;
-            this.tBoxZ.Text = "0";
+            this.tBoxZ.Text = "-5001.6614";
             this.tBoxZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelZ
@@ -482,7 +493,7 @@ namespace RVD_Simulation
             this.tBoxY.Name = "tBoxY";
             this.tBoxY.Size = new System.Drawing.Size(119, 29);
             this.tBoxY.TabIndex = 7;
-            this.tBoxY.Text = "0";
+            this.tBoxY.Text = "-3707.2397";
             this.tBoxY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelY
@@ -502,7 +513,7 @@ namespace RVD_Simulation
             this.tBoxX.Name = "tBoxX";
             this.tBoxX.Size = new System.Drawing.Size(119, 29);
             this.tBoxX.TabIndex = 5;
-            this.tBoxX.Text = "6751.02";
+            this.tBoxX.Text = "2743.7381";
             this.tBoxX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelX
@@ -581,6 +592,10 @@ namespace RVD_Simulation
             // 
             // gBoxManeuver
             // 
+            this.gBoxManeuver.Controls.Add(this.button1);
+            this.gBoxManeuver.Controls.Add(this.btnManeuverDel);
+            this.gBoxManeuver.Controls.Add(this.btnManeuverAdd);
+            this.gBoxManeuver.Controls.Add(this.dataGridView_Maneuver);
             this.gBoxManeuver.Font = new System.Drawing.Font("맑은 고딕", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.gBoxManeuver.Location = new System.Drawing.Point(21, 593);
             this.gBoxManeuver.Name = "gBoxManeuver";
@@ -588,6 +603,76 @@ namespace RVD_Simulation
             this.gBoxManeuver.TabIndex = 23;
             this.gBoxManeuver.TabStop = false;
             this.gBoxManeuver.Text = "Maneuver Planning";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("맑은 고딕", 11.87629F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.Location = new System.Drawing.Point(484, 103);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(79, 38);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Modify";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btnManeuverDel
+            // 
+            this.btnManeuverDel.Font = new System.Drawing.Font("맑은 고딕", 11.87629F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnManeuverDel.Location = new System.Drawing.Point(484, 158);
+            this.btnManeuverDel.Name = "btnManeuverDel";
+            this.btnManeuverDel.Size = new System.Drawing.Size(79, 38);
+            this.btnManeuverDel.TabIndex = 3;
+            this.btnManeuverDel.Text = "Delete";
+            this.btnManeuverDel.UseVisualStyleBackColor = true;
+            this.btnManeuverDel.Click += new System.EventHandler(this.btnManeuverDel_Click);
+            // 
+            // btnManeuverAdd
+            // 
+            this.btnManeuverAdd.Font = new System.Drawing.Font("맑은 고딕", 11.87629F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnManeuverAdd.Location = new System.Drawing.Point(484, 44);
+            this.btnManeuverAdd.Name = "btnManeuverAdd";
+            this.btnManeuverAdd.Size = new System.Drawing.Size(79, 38);
+            this.btnManeuverAdd.TabIndex = 2;
+            this.btnManeuverAdd.Text = "Add";
+            this.btnManeuverAdd.UseVisualStyleBackColor = true;
+            this.btnManeuverAdd.Click += new System.EventHandler(this.btnManeuverAdd_Click);
+            // 
+            // dataGridView_Maneuver
+            // 
+            this.dataGridView_Maneuver.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Maneuver.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Col_Time,
+            this.Col_vx,
+            this.Col_vy,
+            this.Col_vz});
+            this.dataGridView_Maneuver.Location = new System.Drawing.Point(17, 44);
+            this.dataGridView_Maneuver.Name = "dataGridView_Maneuver";
+            this.dataGridView_Maneuver.RowTemplate.Height = 25;
+            this.dataGridView_Maneuver.Size = new System.Drawing.Size(438, 152);
+            this.dataGridView_Maneuver.TabIndex = 0;
+            // 
+            // Col_Time
+            // 
+            this.Col_Time.HeaderText = "Time(sec)";
+            this.Col_Time.Name = "Col_Time";
+            this.Col_Time.Width = 101;
+            // 
+            // Col_vx
+            // 
+            this.Col_vx.HeaderText = "△Vx";
+            this.Col_vx.Name = "Col_vx";
+            this.Col_vx.Width = 101;
+            // 
+            // Col_vy
+            // 
+            this.Col_vy.HeaderText = "△Vy";
+            this.Col_vy.Name = "Col_vy";
+            this.Col_vy.Width = 101;
+            // 
+            // Col_vz
+            // 
+            this.Col_vz.HeaderText = "△Vz";
+            this.Col_vz.Name = "Col_vz";
+            this.Col_vz.Width = 101;
             // 
             // gBoxChaser
             // 
@@ -908,6 +993,7 @@ namespace RVD_Simulation
             this.dateTimePicker_EndSimul.ShowUpDown = true;
             this.dateTimePicker_EndSimul.Size = new System.Drawing.Size(223, 29);
             this.dateTimePicker_EndSimul.TabIndex = 3;
+            this.dateTimePicker_EndSimul.Value = new System.DateTime(2021, 11, 6, 3, 0, 0, 0);
             // 
             // labelWave
             // 
@@ -953,6 +1039,7 @@ namespace RVD_Simulation
             this.dateTimePicker_StartSimul.ShowUpDown = true;
             this.dateTimePicker_StartSimul.Size = new System.Drawing.Size(223, 29);
             this.dateTimePicker_StartSimul.TabIndex = 2;
+            this.dateTimePicker_StartSimul.Value = new System.DateTime(2021, 11, 5, 3, 0, 0, 0);
             // 
             // SatelliteDataForm
             // 
@@ -971,6 +1058,8 @@ namespace RVD_Simulation
             this.gBoxPosVel.ResumeLayout(false);
             this.gBoxPosVel.PerformLayout();
             this.gBoxSimulation.ResumeLayout(false);
+            this.gBoxManeuver.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Maneuver)).EndInit();
             this.gBoxChaser.ResumeLayout(false);
             this.gBoxChaser.PerformLayout();
             this.gBoxRelPOSVEL.ResumeLayout(false);
@@ -1062,5 +1151,13 @@ namespace RVD_Simulation
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_TA;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Period;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Epoch;
+        private System.Windows.Forms.Button btnManeuverAdd;
+        private System.Windows.Forms.DataGridView dataGridView_Maneuver;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Time;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_vx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_vy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_vz;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnManeuverDel;
     }
 }

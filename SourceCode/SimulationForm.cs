@@ -23,12 +23,24 @@ namespace RVD_Simulation
         [DllImport("user32.dll")] // user32.dll methods
         public static extern IntPtr SetParent(IntPtr child, IntPtr newParent); // 윈도우의 부모를 지정,변경하는 함수
 
+        ManeuverList[] maneuverList;
+        int NumOfMane;
+        const int maxNum = 5;
         double x0; double y0; double z0; double vx0; double vy0; double vz0; double angleVel;  double maxTime;
 
         public SimulationForm()
         {
             InitializeComponent();
             ExcuteNum = 0;
+            CreateManeuverArray(maxNum);
+        }
+
+        void CreateManeuverArray(int max)
+        {
+            maneuverList = new ManeuverList[max];
+
+            for (int i = 0; i < max; i++)
+                maneuverList[i] = new ManeuverList();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -37,7 +49,7 @@ namespace RVD_Simulation
             //matlab.Visible = 0; // Invisible  ( 나중에 주석 풀어야함)            
         }
         
-        public void Simulation(double x0, double y0, double z0, double vx0, double vy0, double vz0, double angleVel, DateTime start, DateTime end, double maxTime)
+        public void Simulation(double x0, double y0, double z0, double vx0, double vy0, double vz0, double angleVel, DateTime start, DateTime end, double maxTime, ManeuverList[] maneuverList, int NumOfMane)
         {
             // 최초 실행 시 윈도우 적용
             if (ExcuteNum == 0)
@@ -69,12 +81,18 @@ namespace RVD_Simulation
             // track bar
             trackBarTime.Maximum = Convert.ToInt32(maxTime);
 
-            // matlab
-            
+            // matlab           
             matlab.Execute(@"cd C:\Users\sys35\source\repos\RVD_Simulation\RVD_Simulation"); // 매트랩 함수 있는 폴더로 이동
             object result = null;
-            matlab.Feval("EquOfMotion", 1, out result, x0, y0, z0, vx0, vy0, vz0, angleVel, maxTime);            
-            tBox_TESTMAIN.Text = Convert.ToString(ExcuteNum);
+            matlab.Feval("EquOfMotion", 1, out result, x0, y0, z0, vx0, vy0, vz0, angleVel, maxTime);
+
+            // maneuver processing
+            this.maneuverList = maneuverList;
+            this.NumOfMane = NumOfMane;
+
+            ExcuteNum++; // 실행횟수 증가
+            //tBox_TESTMAIN.Text = Convert.ToString(this.maneuverList[1].time);
+            tBox_TESTMAIN.Text = Convert.ToString(this.NumOfMane);
         }
 
         // close button click event
@@ -97,10 +115,9 @@ namespace RVD_Simulation
             this.ExcuteNum = 0;
             matlab.Execute("close(fig); fig = figure(1);");
             Thread.Sleep(2000);
-            Simulation(x0, y0, z0, vx0, vy0, vz0, angleVel, dateTimePicker_Start.Value, dateTimePicker_End.Value, maxTime);
+            Simulation(x0, y0, z0, vx0, vy0, vz0, angleVel, dateTimePicker_Start.Value, dateTimePicker_End.Value, maxTime, maneuverList, NumOfMane);
             
         }
-
         // 2D View button click event
         private void btn2DView_Click(object sender, EventArgs e)
         {

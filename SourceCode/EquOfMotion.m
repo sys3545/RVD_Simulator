@@ -17,5 +17,7 @@ zlabel('R - bar (m)')
 hold off;
 legend('Target Satellite','Chaser trajectory','Location','northwest')
 
+h = gca;
+set(h,'YDir','reverse'); set(h,'ZDir','reverse');  set(h,'XDir','reverse'); 
 deltav = 10;
 end

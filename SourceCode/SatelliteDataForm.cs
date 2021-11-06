@@ -15,9 +15,14 @@ namespace RVD_Simulation
     public partial class SatelliteDataForm : Form 
     {
         int NumOfSat = 0; // Currnet number of satellites
-        const int maxNum = 6; // The max number of satellites
+        int NumOfMane = 0;
+        const int maxNum = 6; // The max number of satellites and maneuver
         Satellite[] SAT; // Satellite 객체 배열 생성
         SimulationForm SimulationForm; // 시뮬레이션 폼 인스턴스
+        ManeuverAddingForm maneuverAddingForm; // 추가기동 추가 폼 인스턴스
+        public string[] maneuverInfo; // maneuver 한개의 정보를 담는 배열
+        ManeuverList[] maneuverList; // maneuver 리스트를 담는 객체
+        public int testInt;
 
 
         public SatelliteDataForm() // SatelliteDataForm 생성자
@@ -29,6 +34,7 @@ namespace RVD_Simulation
             SimulationForm.Show();
             SetInitialColumn(); // Satellite List 폼 객체의 컬럼 초기 설정
             CreateSATArray(maxNum); // Satellite 객체 배열 생성
+            CreateManeuverArray(maxNum); // Maneuver List 객체 배열 생성
         }
 
         void CreateSATArray(int max) // Satellite 객체 배열 생성
@@ -37,6 +43,13 @@ namespace RVD_Simulation
 
             for (int i = 0; i < max; i++)
                 SAT[i] = new Satellite();
+        }
+        void CreateManeuverArray(int max)
+        {
+            maneuverList = new ManeuverList[max];
+
+            for (int i = 0; i < max; i++)
+                maneuverList[i] = new ManeuverList();
         }
 
         void SetInitialColumn() // Satellite List 폼 객체의 컬럼 초기 설정
@@ -74,7 +87,7 @@ namespace RVD_Simulation
                 Convert.ToString(SAT[NumOfSat].i), Convert.ToString(SAT[NumOfSat].RAAN), Convert.ToString(SAT[NumOfSat].w), Convert.ToString(SAT[NumOfSat].TA), Convert.ToString(SAT[NumOfSat].period), Convert.ToString(SAT[NumOfSat].epoch)};
                 dataGridView_SAT.Rows.Add(newOne);
 
-                tBoxTest.Text = Convert.ToString(SAT[NumOfSat].period);  /////////////////////////////////////////////테스트 출력
+                tBoxTest.Text = Convert.ToString(SAT[NumOfSat].angleVel);  /////////////////////////////////////////////테스트 출력
             }
         }
 
@@ -111,13 +124,45 @@ namespace RVD_Simulation
             // 시뮬레이션 시작
             if (diff > 0)
             {
-                SimulationForm.Simulation(x0, y0, z0, vx0, vy0, vz0, SAT[SelectNum].angleVel, dateTimePicker_StartSimul.Value, dateTimePicker_EndSimul.Value, diff);
+                SimulationForm.Simulation(x0, y0, z0, vx0, vy0, vz0, SAT[SelectNum].angleVel, dateTimePicker_StartSimul.Value, dateTimePicker_EndSimul.Value, diff, maneuverList, NumOfMane);
             }
             else
             {
                 MessageBox.Show("시뮬레이션 시간이 너무 짧습니다.");
             }
         }
+
+        private void btnManeuverAdd_Click(object sender, EventArgs e) // Manever Add button
+        {
+            if (this.NumOfMane < maxNum - 1)
+            {
+                maneuverAddingForm = new ManeuverAddingForm();
+                maneuverAddingForm.Owner = this; // 자식폼의 Owner 선언
+
+                if (maneuverAddingForm.ShowDialog() == DialogResult.OK)
+                {                   
+                    this.NumOfMane++; // 기동 횟수 증가
+                    dataGridView_Maneuver.Rows.Add(maneuverInfo); // maneuver 정보를 담은 배열을 dataGridView에 추가
+
+                    string time = dataGridView_Maneuver.Rows[NumOfMane - 1].Cells[0].Value.ToString(); // 데이터 따오기 (time)
+                    string dvx = dataGridView_Maneuver.Rows[NumOfMane - 1].Cells[1].Value.ToString(); // 데이터 따오기 (dvx)
+                    string dvy = dataGridView_Maneuver.Rows[NumOfMane - 1].Cells[2].Value.ToString(); // 데이터 따오기 (dvy)
+                    string dvz = dataGridView_Maneuver.Rows[NumOfMane - 1].Cells[3].Value.ToString(); // 데이터 따오기 (dvz)
+                    maneuverList[NumOfMane].fill_Infomation(time, dvx, dvy, dvz);
+                    //tBoxTest.Text = Convert.ToString(dataGridView_Maneuver.Rows.Count);
+                    tBoxTest.Text = Convert.ToString(time);
+                }
+            }
+        }
+
+        private void btnManeuverDel_Click(object sender, EventArgs e) // Manever Delete button
+        {
+            if (this.NumOfMane > 0)
+            {
+                dataGridView_Maneuver.Rows.Remove(dataGridView_Maneuver.Rows[NumOfMane - 1]); // 리스트에서 최근 기동 삭제
+                this.NumOfMane -= 1; // 기동 횟수 감소               
+            }
+        }           
     }
 
 
@@ -165,6 +210,30 @@ namespace RVD_Simulation
             velvector.Y = (float)this.yvel;
             velvector.Z = (float)this.zvel;
         }
+    }
+
+
+    /////////////////////// 기동 배열 클래스 //////////////////////
+    ///////////////////////////////////////////////////////////////
+    public partial class ManeuverList
+    {
+        public int time;
+        public double dvx;
+        public double dvy;
+        public double dvz;
+
+        public ManeuverList()
+        {
+            this.time = 0;  this.dvx = 0;  this.dvy = 0;  this.dvz = 0;
+        }
+
+        public void fill_Infomation(string time, string dvx, string dvy, string dvz)
+        {
+            this.time = Convert.ToInt32(time);
+            this.dvx = Convert.ToDouble(dvx);
+            this.dvy = Convert.ToDouble(dvy);
+            this.dvz = Convert.ToDouble(dvz);
+        }       
     }
 
 
