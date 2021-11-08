@@ -46,6 +46,7 @@ namespace RVD_Simulation
             this.tBox_TESTMAIN = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.FileMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnTestMain = new System.Windows.Forms.Button();
             this.gboxTrajectory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSimul)).BeginInit();
             this.gBoxTime.SuspendLayout();
@@ -206,6 +207,7 @@ namespace RVD_Simulation
             // 
             // gBoxStatus
             // 
+            this.gBoxStatus.Controls.Add(this.btnTestMain);
             this.gBoxStatus.Controls.Add(this.tBox_TESTMAIN);
             this.gBoxStatus.Font = new System.Drawing.Font("맑은 고딕", 22.26804F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.gBoxStatus.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -219,7 +221,7 @@ namespace RVD_Simulation
             // tBox_TESTMAIN
             // 
             this.tBox_TESTMAIN.Font = new System.Drawing.Font("맑은 고딕", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBox_TESTMAIN.Location = new System.Drawing.Point(10, 526);
+            this.tBox_TESTMAIN.Location = new System.Drawing.Point(145, 520);
             this.tBox_TESTMAIN.Name = "tBox_TESTMAIN";
             this.tBox_TESTMAIN.Size = new System.Drawing.Size(183, 33);
             this.tBox_TESTMAIN.TabIndex = 0;
@@ -240,6 +242,17 @@ namespace RVD_Simulation
             this.FileMenu.Name = "FileMenu";
             this.FileMenu.Size = new System.Drawing.Size(50, 23);
             this.FileMenu.Text = "File";
+            // 
+            // btnTestMain
+            // 
+            this.btnTestMain.Font = new System.Drawing.Font("맑은 고딕", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnTestMain.Location = new System.Drawing.Point(28, 520);
+            this.btnTestMain.Name = "btnTestMain";
+            this.btnTestMain.Size = new System.Drawing.Size(95, 33);
+            this.btnTestMain.TabIndex = 1;
+            this.btnTestMain.Text = "TEST";
+            this.btnTestMain.UseVisualStyleBackColor = true;
+            this.btnTestMain.Click += new System.EventHandler(this.btnTestMain_Click);
             // 
             // SimulationForm
             // 
@@ -287,6 +300,7 @@ namespace RVD_Simulation
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btn2DView;
         private System.Windows.Forms.Button btn3DView;
+        private System.Windows.Forms.Button btnTestMain;
     }
 }
 
