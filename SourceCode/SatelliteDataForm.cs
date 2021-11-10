@@ -59,6 +59,8 @@ namespace RVD_Simulation
             dataGridView_SAT.DefaultCellStyle.Font = new Font("맑은 고딕", 14); // 내용부분 폰트           
         }
 
+
+        ///////////////////////////////////////////////////// button event ////////////////////////////////////////////////////////////////
         private void btnAdd_Click(object sender, EventArgs e) // 인공위성 생성버튼
         {
             if (this.NumOfSat < maxNum - 1)
@@ -106,10 +108,8 @@ namespace RVD_Simulation
             int SelectNum; // 선택된 타겟번호
             double x0; double y0; double z0; double vx0; double vy0; double vz0;
 
-
             // 시간차이 구하기
             diff = Calculator.FindDiffTime(dateTimePicker_StartSimul.Value, dateTimePicker_EndSimul.Value);
-
             // 선택된 타겟 가져오기
             SelectNum = Convert.ToInt32(tBoxTgtNum.Text);
 
@@ -123,13 +123,9 @@ namespace RVD_Simulation
 
             // 시뮬레이션 시작
             if (diff > 0)
-            {
                 SimulationForm.Simulation(x0, y0, z0, vx0, vy0, vz0, SAT[SelectNum].angleVel, dateTimePicker_StartSimul.Value, dateTimePicker_EndSimul.Value, diff, maneuverList, NumOfMane);
-            }
             else
-            {
                 MessageBox.Show("시뮬레이션 시간이 너무 짧습니다.");
-            }
         }
 
         private void btnManeuverAdd_Click(object sender, EventArgs e) // Manever Add button
@@ -149,8 +145,6 @@ namespace RVD_Simulation
                     string dvy = dataGridView_Maneuver.Rows[NumOfMane - 1].Cells[2].Value.ToString(); // 데이터 따오기 (dvy)
                     string dvz = dataGridView_Maneuver.Rows[NumOfMane - 1].Cells[3].Value.ToString(); // 데이터 따오기 (dvz)
                     maneuverList[NumOfMane].fill_Infomation(time, dvx, dvy, dvz);
-                    //tBoxTest.Text = Convert.ToString(dataGridView_Maneuver.Rows.Count);
-                    tBoxTest.Text = Convert.ToString(time);
                 }
             }
         }
@@ -217,7 +211,7 @@ namespace RVD_Simulation
     ///////////////////////////////////////////////////////////////
     public partial class ManeuverList
     {
-        public int time;
+        public double time;
         public double dvx;
         public double dvy;
         public double dvz;
@@ -229,7 +223,7 @@ namespace RVD_Simulation
 
         public void fill_Infomation(string time, string dvx, string dvy, string dvz)
         {
-            this.time = Convert.ToInt32(time);
+            this.time = Convert.ToDouble(time);
             this.dvx = Convert.ToDouble(dvx);
             this.dvy = Convert.ToDouble(dvy);
             this.dvz = Convert.ToDouble(dvz);
