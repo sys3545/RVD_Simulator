@@ -24,3 +24,6 @@ matlab plotting problem has been solved.
    
 Released version 0.1.1 (2021 11 06) :   
 maneuver adding methods are programming.   
+   
+Released version 0.2.0 (2021 11 09) :   
+Maneuver methods are completed.
