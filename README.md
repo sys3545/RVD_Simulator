@@ -27,3 +27,7 @@ maneuver adding methods are programming.
    
 Released version 0.2.0 (2021 11 09) :   
 Maneuver methods are completed.
+   
+Released version 1.0.0 (2021 11 21) :   
+Atmospheric drag is considered.   
+version 1 has been completed.   
