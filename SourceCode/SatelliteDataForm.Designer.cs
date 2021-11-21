@@ -42,6 +42,9 @@ namespace RVD_Simulation
             this.Col_Period = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Epoch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gBoxAddSAT = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tBoxCrossSecTgt = new System.Windows.Forms.TextBox();
             this.labelKG_Target = new System.Windows.Forms.Label();
             this.tBoxMass = new System.Windows.Forms.TextBox();
             this.labelMass = new System.Windows.Forms.Label();
@@ -73,6 +76,9 @@ namespace RVD_Simulation
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.gBoxDisturbanceTarget = new System.Windows.Forms.GroupBox();
+            this.tBoxDragTgt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cBoxDragTgt = new System.Windows.Forms.CheckBox();
             this.gBoxSimulation = new System.Windows.Forms.GroupBox();
             this.gBoxManeuver = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -83,7 +89,12 @@ namespace RVD_Simulation
             this.Col_vx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_vy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_vz = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gBoxChaser = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tBoxCorssSecCha = new System.Windows.Forms.TextBox();
             this.tBoxTgtNum = new System.Windows.Forms.TextBox();
             this.labelTGTSAT = new System.Windows.Forms.Label();
             this.labelKg_Chaser = new System.Windows.Forms.Label();
@@ -109,6 +120,9 @@ namespace RVD_Simulation
             this.labelZVelRel = new System.Windows.Forms.Label();
             this.tBoxYvelRel = new System.Windows.Forms.TextBox();
             this.gBoxDisturbanceChaser = new System.Windows.Forms.GroupBox();
+            this.tBoxDragCha = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cBoxDragCha = new System.Windows.Forms.CheckBox();
             this.btnStart = new System.Windows.Forms.Button();
             this.gBoxTime2 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker_EndSimul = new System.Windows.Forms.DateTimePicker();
@@ -120,11 +134,13 @@ namespace RVD_Simulation
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_SAT)).BeginInit();
             this.gBoxAddSAT.SuspendLayout();
             this.gBoxPosVel.SuspendLayout();
+            this.gBoxDisturbanceTarget.SuspendLayout();
             this.gBoxSimulation.SuspendLayout();
             this.gBoxManeuver.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Maneuver)).BeginInit();
             this.gBoxChaser.SuspendLayout();
             this.gBoxRelPOSVEL.SuspendLayout();
+            this.gBoxDisturbanceChaser.SuspendLayout();
             this.gBoxTime2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,9 +149,9 @@ namespace RVD_Simulation
             this.gBoxList.Controls.Add(this.dataGridView_SAT);
             this.gBoxList.Font = new System.Drawing.Font("맑은 고딕", 22.26804F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.gBoxList.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.gBoxList.Location = new System.Drawing.Point(21, 673);
+            this.gBoxList.Location = new System.Drawing.Point(21, 649);
             this.gBoxList.Name = "gBoxList";
-            this.gBoxList.Size = new System.Drawing.Size(772, 255);
+            this.gBoxList.Size = new System.Drawing.Size(772, 279);
             this.gBoxList.TabIndex = 0;
             this.gBoxList.TabStop = false;
             this.gBoxList.Text = "Satellite List";
@@ -158,7 +174,7 @@ namespace RVD_Simulation
             this.dataGridView_SAT.Location = new System.Drawing.Point(21, 46);
             this.dataGridView_SAT.Name = "dataGridView_SAT";
             this.dataGridView_SAT.RowTemplate.Height = 25;
-            this.dataGridView_SAT.Size = new System.Drawing.Size(729, 187);
+            this.dataGridView_SAT.Size = new System.Drawing.Size(729, 211);
             this.dataGridView_SAT.TabIndex = 0;
             // 
             // Col_Number
@@ -224,6 +240,9 @@ namespace RVD_Simulation
             // 
             // gBoxAddSAT
             // 
+            this.gBoxAddSAT.Controls.Add(this.label5);
+            this.gBoxAddSAT.Controls.Add(this.label3);
+            this.gBoxAddSAT.Controls.Add(this.tBoxCrossSecTgt);
             this.gBoxAddSAT.Controls.Add(this.labelKG_Target);
             this.gBoxAddSAT.Controls.Add(this.tBoxMass);
             this.gBoxAddSAT.Controls.Add(this.labelMass);
@@ -240,16 +259,46 @@ namespace RVD_Simulation
             this.gBoxAddSAT.Font = new System.Drawing.Font("맑은 고딕", 22.26804F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.gBoxAddSAT.Location = new System.Drawing.Point(21, 23);
             this.gBoxAddSAT.Name = "gBoxAddSAT";
-            this.gBoxAddSAT.Size = new System.Drawing.Size(772, 644);
+            this.gBoxAddSAT.Size = new System.Drawing.Size(772, 631);
             this.gBoxAddSAT.TabIndex = 1;
             this.gBoxAddSAT.TabStop = false;
             this.gBoxAddSAT.Text = "Target Satellite Management";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(25, 201);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(125, 19);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "Cross-Section";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(310, 201);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 19);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "m^2";
+            // 
+            // tBoxCrossSecTgt
+            // 
+            this.tBoxCrossSecTgt.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tBoxCrossSecTgt.Location = new System.Drawing.Point(185, 197);
+            this.tBoxCrossSecTgt.Name = "tBoxCrossSecTgt";
+            this.tBoxCrossSecTgt.Size = new System.Drawing.Size(119, 29);
+            this.tBoxCrossSecTgt.TabIndex = 31;
+            this.tBoxCrossSecTgt.Text = "1";
+            this.tBoxCrossSecTgt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelKG_Target
             // 
             this.labelKG_Target.AutoSize = true;
             this.labelKG_Target.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelKG_Target.Location = new System.Drawing.Point(215, 137);
+            this.labelKG_Target.Location = new System.Drawing.Point(310, 157);
             this.labelKG_Target.Name = "labelKG_Target";
             this.labelKG_Target.Size = new System.Drawing.Size(28, 19);
             this.labelKG_Target.TabIndex = 30;
@@ -258,18 +307,18 @@ namespace RVD_Simulation
             // tBoxMass
             // 
             this.tBoxMass.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxMass.Location = new System.Drawing.Point(90, 133);
+            this.tBoxMass.Location = new System.Drawing.Point(185, 153);
             this.tBoxMass.Name = "tBoxMass";
             this.tBoxMass.Size = new System.Drawing.Size(119, 29);
             this.tBoxMass.TabIndex = 29;
             this.tBoxMass.Text = "45000";
-            this.tBoxMass.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tBoxMass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelMass
             // 
             this.labelMass.AutoSize = true;
             this.labelMass.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelMass.Location = new System.Drawing.Point(35, 140);
+            this.labelMass.Location = new System.Drawing.Point(61, 156);
             this.labelMass.Name = "labelMass";
             this.labelMass.Size = new System.Drawing.Size(49, 19);
             this.labelMass.TabIndex = 28;
@@ -279,7 +328,7 @@ namespace RVD_Simulation
             // 
             this.labelEpoch.AutoSize = true;
             this.labelEpoch.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelEpoch.Location = new System.Drawing.Point(25, 192);
+            this.labelEpoch.Location = new System.Drawing.Point(50, 341);
             this.labelEpoch.Name = "labelEpoch";
             this.labelEpoch.Size = new System.Drawing.Size(60, 19);
             this.labelEpoch.TabIndex = 27;
@@ -291,28 +340,28 @@ namespace RVD_Simulation
             this.dateTimePicker_Epoch.CustomFormat = " yyy/MM/dd HH:mm:ss";
             this.dateTimePicker_Epoch.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker_Epoch.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker_Epoch.Location = new System.Drawing.Point(90, 186);
+            this.dateTimePicker_Epoch.Location = new System.Drawing.Point(139, 336);
             this.dateTimePicker_Epoch.Name = "dateTimePicker_Epoch";
             this.dateTimePicker_Epoch.ShowUpDown = true;
-            this.dateTimePicker_Epoch.Size = new System.Drawing.Size(227, 29);
+            this.dateTimePicker_Epoch.Size = new System.Drawing.Size(214, 29);
             this.dateTimePicker_Epoch.TabIndex = 26;
             this.dateTimePicker_Epoch.Value = new System.DateTime(2021, 11, 5, 3, 0, 0, 0);
             // 
             // tBoxName
             // 
             this.tBoxName.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxName.Location = new System.Drawing.Point(90, 78);
+            this.tBoxName.Location = new System.Drawing.Point(185, 110);
             this.tBoxName.Name = "tBoxName";
             this.tBoxName.Size = new System.Drawing.Size(119, 29);
             this.tBoxName.TabIndex = 25;
             this.tBoxName.Text = "ISS";
-            this.tBoxName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tBoxName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
             this.labelName.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelName.Location = new System.Drawing.Point(31, 84);
+            this.labelName.Location = new System.Drawing.Point(60, 113);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(54, 19);
             this.labelName.TabIndex = 24;
@@ -339,9 +388,9 @@ namespace RVD_Simulation
             this.gBoxPosVel.Controls.Add(this.tBoxX);
             this.gBoxPosVel.Controls.Add(this.labelX);
             this.gBoxPosVel.Font = new System.Drawing.Font("맑은 고딕", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.gBoxPosVel.Location = new System.Drawing.Point(390, 46);
+            this.gBoxPosVel.Location = new System.Drawing.Point(390, 84);
             this.gBoxPosVel.Name = "gBoxPosVel";
-            this.gBoxPosVel.Size = new System.Drawing.Size(364, 346);
+            this.gBoxPosVel.Size = new System.Drawing.Size(364, 292);
             this.gBoxPosVel.TabIndex = 23;
             this.gBoxPosVel.TabStop = false;
             this.gBoxPosVel.Text = "Position, Velocity";
@@ -350,7 +399,7 @@ namespace RVD_Simulation
             // 
             this.labelKM6.AutoSize = true;
             this.labelKM6.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelKM6.Location = new System.Drawing.Point(259, 308);
+            this.labelKM6.Location = new System.Drawing.Point(262, 255);
             this.labelKM6.Name = "labelKM6";
             this.labelKM6.Size = new System.Drawing.Size(69, 19);
             this.labelKM6.TabIndex = 21;
@@ -360,7 +409,7 @@ namespace RVD_Simulation
             // 
             this.labelKM5.AutoSize = true;
             this.labelKM5.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelKM5.Location = new System.Drawing.Point(259, 255);
+            this.labelKM5.Location = new System.Drawing.Point(263, 212);
             this.labelKM5.Name = "labelKM5";
             this.labelKM5.Size = new System.Drawing.Size(69, 19);
             this.labelKM5.TabIndex = 20;
@@ -370,7 +419,7 @@ namespace RVD_Simulation
             // 
             this.labelKM4.AutoSize = true;
             this.labelKM4.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelKM4.Location = new System.Drawing.Point(258, 201);
+            this.labelKM4.Location = new System.Drawing.Point(261, 169);
             this.labelKM4.Name = "labelKM4";
             this.labelKM4.Size = new System.Drawing.Size(69, 19);
             this.labelKM4.TabIndex = 19;
@@ -380,7 +429,7 @@ namespace RVD_Simulation
             // 
             this.labelKM3.AutoSize = true;
             this.labelKM3.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelKM3.Location = new System.Drawing.Point(259, 147);
+            this.labelKM3.Location = new System.Drawing.Point(262, 128);
             this.labelKM3.Name = "labelKM3";
             this.labelKM3.Size = new System.Drawing.Size(33, 19);
             this.labelKM3.TabIndex = 18;
@@ -390,7 +439,7 @@ namespace RVD_Simulation
             // 
             this.labelKM2.AutoSize = true;
             this.labelKM2.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelKM2.Location = new System.Drawing.Point(259, 95);
+            this.labelKM2.Location = new System.Drawing.Point(261, 83);
             this.labelKM2.Name = "labelKM2";
             this.labelKM2.Size = new System.Drawing.Size(33, 19);
             this.labelKM2.TabIndex = 17;
@@ -400,7 +449,7 @@ namespace RVD_Simulation
             // 
             this.labelKM1.AutoSize = true;
             this.labelKM1.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelKM1.Location = new System.Drawing.Point(258, 39);
+            this.labelKM1.Location = new System.Drawing.Point(262, 39);
             this.labelKM1.Name = "labelKM1";
             this.labelKM1.Size = new System.Drawing.Size(33, 19);
             this.labelKM1.TabIndex = 16;
@@ -409,7 +458,7 @@ namespace RVD_Simulation
             // tBoxZvel
             // 
             this.tBoxZvel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxZvel.Location = new System.Drawing.Point(134, 301);
+            this.tBoxZvel.Location = new System.Drawing.Point(137, 248);
             this.tBoxZvel.Name = "tBoxZvel";
             this.tBoxZvel.Size = new System.Drawing.Size(119, 29);
             this.tBoxZvel.TabIndex = 15;
@@ -420,7 +469,7 @@ namespace RVD_Simulation
             // 
             this.labelZvel.AutoSize = true;
             this.labelZvel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelZvel.Location = new System.Drawing.Point(39, 308);
+            this.labelZvel.Location = new System.Drawing.Point(42, 255);
             this.labelZvel.Name = "labelZvel";
             this.labelZvel.Size = new System.Drawing.Size(88, 19);
             this.labelZvel.TabIndex = 14;
@@ -429,7 +478,7 @@ namespace RVD_Simulation
             // tBoxYvel
             // 
             this.tBoxYvel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxYvel.Location = new System.Drawing.Point(133, 248);
+            this.tBoxYvel.Location = new System.Drawing.Point(137, 205);
             this.tBoxYvel.Name = "tBoxYvel";
             this.tBoxYvel.Size = new System.Drawing.Size(119, 29);
             this.tBoxYvel.TabIndex = 13;
@@ -440,7 +489,7 @@ namespace RVD_Simulation
             // 
             this.labelYvel.AutoSize = true;
             this.labelYvel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelYvel.Location = new System.Drawing.Point(38, 255);
+            this.labelYvel.Location = new System.Drawing.Point(42, 212);
             this.labelYvel.Name = "labelYvel";
             this.labelYvel.Size = new System.Drawing.Size(88, 19);
             this.labelYvel.TabIndex = 12;
@@ -449,7 +498,7 @@ namespace RVD_Simulation
             // tBoxXvel
             // 
             this.tBoxXvel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxXvel.Location = new System.Drawing.Point(134, 194);
+            this.tBoxXvel.Location = new System.Drawing.Point(137, 162);
             this.tBoxXvel.Name = "tBoxXvel";
             this.tBoxXvel.Size = new System.Drawing.Size(119, 29);
             this.tBoxXvel.TabIndex = 11;
@@ -460,7 +509,7 @@ namespace RVD_Simulation
             // 
             this.labelXvel.AutoSize = true;
             this.labelXvel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelXvel.Location = new System.Drawing.Point(39, 201);
+            this.labelXvel.Location = new System.Drawing.Point(42, 169);
             this.labelXvel.Name = "labelXvel";
             this.labelXvel.Size = new System.Drawing.Size(88, 19);
             this.labelXvel.TabIndex = 10;
@@ -469,7 +518,7 @@ namespace RVD_Simulation
             // tBoxZ
             // 
             this.tBoxZ.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxZ.Location = new System.Drawing.Point(134, 140);
+            this.tBoxZ.Location = new System.Drawing.Point(137, 121);
             this.tBoxZ.Name = "tBoxZ";
             this.tBoxZ.Size = new System.Drawing.Size(119, 29);
             this.tBoxZ.TabIndex = 9;
@@ -480,7 +529,7 @@ namespace RVD_Simulation
             // 
             this.labelZ.AutoSize = true;
             this.labelZ.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelZ.Location = new System.Drawing.Point(108, 147);
+            this.labelZ.Location = new System.Drawing.Point(75, 128);
             this.labelZ.Name = "labelZ";
             this.labelZ.Size = new System.Drawing.Size(20, 19);
             this.labelZ.TabIndex = 8;
@@ -489,7 +538,7 @@ namespace RVD_Simulation
             // tBoxY
             // 
             this.tBoxY.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxY.Location = new System.Drawing.Point(134, 88);
+            this.tBoxY.Location = new System.Drawing.Point(136, 76);
             this.tBoxY.Name = "tBoxY";
             this.tBoxY.Size = new System.Drawing.Size(119, 29);
             this.tBoxY.TabIndex = 7;
@@ -500,7 +549,7 @@ namespace RVD_Simulation
             // 
             this.labelY.AutoSize = true;
             this.labelY.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelY.Location = new System.Drawing.Point(108, 95);
+            this.labelY.Location = new System.Drawing.Point(74, 83);
             this.labelY.Name = "labelY";
             this.labelY.Size = new System.Drawing.Size(20, 19);
             this.labelY.TabIndex = 6;
@@ -509,7 +558,7 @@ namespace RVD_Simulation
             // tBoxX
             // 
             this.tBoxX.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxX.Location = new System.Drawing.Point(133, 32);
+            this.tBoxX.Location = new System.Drawing.Point(137, 32);
             this.tBoxX.Name = "tBoxX";
             this.tBoxX.Size = new System.Drawing.Size(119, 29);
             this.tBoxX.TabIndex = 5;
@@ -520,7 +569,7 @@ namespace RVD_Simulation
             // 
             this.labelX.AutoSize = true;
             this.labelX.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelX.Location = new System.Drawing.Point(108, 39);
+            this.labelX.Location = new System.Drawing.Point(76, 39);
             this.labelX.Name = "labelX";
             this.labelX.Size = new System.Drawing.Size(20, 19);
             this.labelX.TabIndex = 4;
@@ -529,7 +578,7 @@ namespace RVD_Simulation
             // tBoxTest
             // 
             this.tBoxTest.Font = new System.Drawing.Font("맑은 고딕", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxTest.Location = new System.Drawing.Point(124, 593);
+            this.tBoxTest.Location = new System.Drawing.Point(124, 585);
             this.tBoxTest.Name = "tBoxTest";
             this.tBoxTest.Size = new System.Drawing.Size(236, 33);
             this.tBoxTest.TabIndex = 22;
@@ -537,7 +586,7 @@ namespace RVD_Simulation
             // btnModify
             // 
             this.btnModify.Font = new System.Drawing.Font("맑은 고딕", 11.87629F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnModify.Location = new System.Drawing.Point(527, 590);
+            this.btnModify.Location = new System.Drawing.Point(527, 582);
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(104, 38);
             this.btnModify.TabIndex = 3;
@@ -547,7 +596,7 @@ namespace RVD_Simulation
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("맑은 고딕", 11.87629F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnDelete.Location = new System.Drawing.Point(650, 590);
+            this.btnDelete.Location = new System.Drawing.Point(650, 582);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(104, 38);
             this.btnDelete.TabIndex = 2;
@@ -558,7 +607,7 @@ namespace RVD_Simulation
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("맑은 고딕", 11.87629F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAdd.Location = new System.Drawing.Point(403, 590);
+            this.btnAdd.Location = new System.Drawing.Point(403, 582);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(104, 38);
             this.btnAdd.TabIndex = 1;
@@ -568,13 +617,48 @@ namespace RVD_Simulation
             // 
             // gBoxDisturbanceTarget
             // 
+            this.gBoxDisturbanceTarget.Controls.Add(this.tBoxDragTgt);
+            this.gBoxDisturbanceTarget.Controls.Add(this.label1);
+            this.gBoxDisturbanceTarget.Controls.Add(this.cBoxDragTgt);
             this.gBoxDisturbanceTarget.Font = new System.Drawing.Font("맑은 고딕", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.gBoxDisturbanceTarget.Location = new System.Drawing.Point(25, 398);
+            this.gBoxDisturbanceTarget.Location = new System.Drawing.Point(25, 379);
             this.gBoxDisturbanceTarget.Name = "gBoxDisturbanceTarget";
-            this.gBoxDisturbanceTarget.Size = new System.Drawing.Size(729, 186);
+            this.gBoxDisturbanceTarget.Size = new System.Drawing.Size(729, 188);
             this.gBoxDisturbanceTarget.TabIndex = 0;
             this.gBoxDisturbanceTarget.TabStop = false;
             this.gBoxDisturbanceTarget.Text = "Disturbance";
+            // 
+            // tBoxDragTgt
+            // 
+            this.tBoxDragTgt.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tBoxDragTgt.Location = new System.Drawing.Point(525, 36);
+            this.tBoxDragTgt.Name = "tBoxDragTgt";
+            this.tBoxDragTgt.Size = new System.Drawing.Size(158, 29);
+            this.tBoxDragTgt.TabIndex = 32;
+            this.tBoxDragTgt.Text = "0";
+            this.tBoxDragTgt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("돋움", 14.84536F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(365, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(143, 20);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "Drag Coefficient";
+            // 
+            // cBoxDragTgt
+            // 
+            this.cBoxDragTgt.AutoSize = true;
+            this.cBoxDragTgt.Font = new System.Drawing.Font("돋움", 14.84536F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cBoxDragTgt.Location = new System.Drawing.Point(40, 39);
+            this.cBoxDragTgt.Name = "cBoxDragTgt";
+            this.cBoxDragTgt.Size = new System.Drawing.Size(178, 24);
+            this.cBoxDragTgt.TabIndex = 0;
+            this.cBoxDragTgt.Text = "Atmospheric Drag";
+            this.cBoxDragTgt.UseVisualStyleBackColor = true;
+            this.cBoxDragTgt.CheckedChanged += new System.EventHandler(this.cBoxDragTgt_CheckedChanged);
             // 
             // gBoxSimulation
             // 
@@ -607,9 +691,9 @@ namespace RVD_Simulation
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("맑은 고딕", 11.87629F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(484, 103);
+            this.button1.Location = new System.Drawing.Point(691, 103);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(79, 38);
+            this.button1.Size = new System.Drawing.Size(105, 38);
             this.button1.TabIndex = 4;
             this.button1.Text = "Modify";
             this.button1.UseVisualStyleBackColor = true;
@@ -617,9 +701,9 @@ namespace RVD_Simulation
             // btnManeuverDel
             // 
             this.btnManeuverDel.Font = new System.Drawing.Font("맑은 고딕", 11.87629F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnManeuverDel.Location = new System.Drawing.Point(484, 158);
+            this.btnManeuverDel.Location = new System.Drawing.Point(691, 158);
             this.btnManeuverDel.Name = "btnManeuverDel";
-            this.btnManeuverDel.Size = new System.Drawing.Size(79, 38);
+            this.btnManeuverDel.Size = new System.Drawing.Size(105, 38);
             this.btnManeuverDel.TabIndex = 3;
             this.btnManeuverDel.Text = "Delete";
             this.btnManeuverDel.UseVisualStyleBackColor = true;
@@ -628,9 +712,9 @@ namespace RVD_Simulation
             // btnManeuverAdd
             // 
             this.btnManeuverAdd.Font = new System.Drawing.Font("맑은 고딕", 11.87629F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnManeuverAdd.Location = new System.Drawing.Point(484, 44);
+            this.btnManeuverAdd.Location = new System.Drawing.Point(691, 44);
             this.btnManeuverAdd.Name = "btnManeuverAdd";
-            this.btnManeuverAdd.Size = new System.Drawing.Size(79, 38);
+            this.btnManeuverAdd.Size = new System.Drawing.Size(105, 38);
             this.btnManeuverAdd.TabIndex = 2;
             this.btnManeuverAdd.Text = "Add";
             this.btnManeuverAdd.UseVisualStyleBackColor = true;
@@ -643,11 +727,13 @@ namespace RVD_Simulation
             this.Col_Time,
             this.Col_vx,
             this.Col_vy,
-            this.Col_vz});
+            this.Col_vz,
+            this.Col_Duration,
+            this.Col_Type});
             this.dataGridView_Maneuver.Location = new System.Drawing.Point(17, 44);
             this.dataGridView_Maneuver.Name = "dataGridView_Maneuver";
             this.dataGridView_Maneuver.RowTemplate.Height = 25;
-            this.dataGridView_Maneuver.Size = new System.Drawing.Size(438, 152);
+            this.dataGridView_Maneuver.Size = new System.Drawing.Size(649, 152);
             this.dataGridView_Maneuver.TabIndex = 0;
             // 
             // Col_Time
@@ -674,8 +760,23 @@ namespace RVD_Simulation
             this.Col_vz.Name = "Col_vz";
             this.Col_vz.Width = 101;
             // 
+            // Col_Duration
+            // 
+            this.Col_Duration.HeaderText = "Duration";
+            this.Col_Duration.Name = "Col_Duration";
+            this.Col_Duration.Width = 101;
+            // 
+            // Col_Type
+            // 
+            this.Col_Type.HeaderText = "Type";
+            this.Col_Type.Name = "Col_Type";
+            this.Col_Type.Width = 101;
+            // 
             // gBoxChaser
             // 
+            this.gBoxChaser.Controls.Add(this.label6);
+            this.gBoxChaser.Controls.Add(this.label4);
+            this.gBoxChaser.Controls.Add(this.tBoxCorssSecCha);
             this.gBoxChaser.Controls.Add(this.tBoxTgtNum);
             this.gBoxChaser.Controls.Add(this.labelTGTSAT);
             this.gBoxChaser.Controls.Add(this.labelKg_Chaser);
@@ -691,20 +792,51 @@ namespace RVD_Simulation
             this.gBoxChaser.TabStop = false;
             this.gBoxChaser.Text = "Chaser Initial Value";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(48, 145);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(125, 19);
+            this.label6.TabIndex = 34;
+            this.label6.Text = "Cross-Section";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(350, 146);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 19);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "m^2";
+            // 
+            // tBoxCorssSecCha
+            // 
+            this.tBoxCorssSecCha.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tBoxCorssSecCha.Location = new System.Drawing.Point(225, 140);
+            this.tBoxCorssSecCha.Name = "tBoxCorssSecCha";
+            this.tBoxCorssSecCha.Size = new System.Drawing.Size(119, 29);
+            this.tBoxCorssSecCha.TabIndex = 32;
+            this.tBoxCorssSecCha.Text = "1";
+            this.tBoxCorssSecCha.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // tBoxTgtNum
             // 
             this.tBoxTgtNum.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxTgtNum.Location = new System.Drawing.Point(506, 44);
+            this.tBoxTgtNum.Location = new System.Drawing.Point(225, 55);
             this.tBoxTgtNum.Name = "tBoxTgtNum";
             this.tBoxTgtNum.Size = new System.Drawing.Size(119, 29);
             this.tBoxTgtNum.TabIndex = 34;
             this.tBoxTgtNum.Text = "1";
+            this.tBoxTgtNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelTGTSAT
             // 
             this.labelTGTSAT.AutoSize = true;
             this.labelTGTSAT.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelTGTSAT.Location = new System.Drawing.Point(372, 50);
+            this.labelTGTSAT.Location = new System.Drawing.Point(45, 61);
             this.labelTGTSAT.Name = "labelTGTSAT";
             this.labelTGTSAT.Size = new System.Drawing.Size(125, 19);
             this.labelTGTSAT.TabIndex = 32;
@@ -714,7 +846,7 @@ namespace RVD_Simulation
             // 
             this.labelKg_Chaser.AutoSize = true;
             this.labelKg_Chaser.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelKg_Chaser.Location = new System.Drawing.Point(291, 50);
+            this.labelKg_Chaser.Location = new System.Drawing.Point(350, 104);
             this.labelKg_Chaser.Name = "labelKg_Chaser";
             this.labelKg_Chaser.Size = new System.Drawing.Size(28, 19);
             this.labelKg_Chaser.TabIndex = 33;
@@ -723,16 +855,18 @@ namespace RVD_Simulation
             // tBoxMass_Chaser
             // 
             this.tBoxMass_Chaser.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxMass_Chaser.Location = new System.Drawing.Point(166, 44);
+            this.tBoxMass_Chaser.Location = new System.Drawing.Point(225, 98);
             this.tBoxMass_Chaser.Name = "tBoxMass_Chaser";
             this.tBoxMass_Chaser.Size = new System.Drawing.Size(119, 29);
             this.tBoxMass_Chaser.TabIndex = 32;
+            this.tBoxMass_Chaser.Text = "10";
+            this.tBoxMass_Chaser.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelMass_Chaser
             // 
             this.labelMass_Chaser.AutoSize = true;
             this.labelMass_Chaser.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelMass_Chaser.Location = new System.Drawing.Point(111, 51);
+            this.labelMass_Chaser.Location = new System.Drawing.Point(89, 105);
             this.labelMass_Chaser.Name = "labelMass_Chaser";
             this.labelMass_Chaser.Size = new System.Drawing.Size(49, 19);
             this.labelMass_Chaser.TabIndex = 31;
@@ -758,9 +892,9 @@ namespace RVD_Simulation
             this.gBoxRelPOSVEL.Controls.Add(this.labelYVelRel);
             this.gBoxRelPOSVEL.Controls.Add(this.labelZVelRel);
             this.gBoxRelPOSVEL.Controls.Add(this.tBoxYvelRel);
-            this.gBoxRelPOSVEL.Location = new System.Drawing.Point(17, 97);
+            this.gBoxRelPOSVEL.Location = new System.Drawing.Point(422, 29);
             this.gBoxRelPOSVEL.Name = "gBoxRelPOSVEL";
-            this.gBoxRelPOSVEL.Size = new System.Drawing.Size(779, 210);
+            this.gBoxRelPOSVEL.Size = new System.Drawing.Size(374, 292);
             this.gBoxRelPOSVEL.TabIndex = 23;
             this.gBoxRelPOSVEL.TabStop = false;
             this.gBoxRelPOSVEL.Text = "Relative Position, Velocity";
@@ -768,7 +902,7 @@ namespace RVD_Simulation
             // tBoxXRel
             // 
             this.tBoxXRel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxXRel.Location = new System.Drawing.Point(148, 49);
+            this.tBoxXRel.Location = new System.Drawing.Point(135, 36);
             this.tBoxXRel.Name = "tBoxXRel";
             this.tBoxXRel.Size = new System.Drawing.Size(119, 29);
             this.tBoxXRel.TabIndex = 5;
@@ -779,7 +913,7 @@ namespace RVD_Simulation
             // 
             this.labelXRel.AutoSize = true;
             this.labelXRel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelXRel.Location = new System.Drawing.Point(123, 56);
+            this.labelXRel.Location = new System.Drawing.Point(75, 43);
             this.labelXRel.Name = "labelXRel";
             this.labelXRel.Size = new System.Drawing.Size(20, 19);
             this.labelXRel.TabIndex = 4;
@@ -789,7 +923,7 @@ namespace RVD_Simulation
             // 
             this.labelM6.AutoSize = true;
             this.labelM6.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelM6.Location = new System.Drawing.Point(614, 164);
+            this.labelM6.Location = new System.Drawing.Point(261, 259);
             this.labelM6.Name = "labelM6";
             this.labelM6.Size = new System.Drawing.Size(60, 19);
             this.labelM6.TabIndex = 21;
@@ -799,7 +933,7 @@ namespace RVD_Simulation
             // 
             this.labelYRel.AutoSize = true;
             this.labelYRel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelYRel.Location = new System.Drawing.Point(123, 112);
+            this.labelYRel.Location = new System.Drawing.Point(75, 86);
             this.labelYRel.Name = "labelYRel";
             this.labelYRel.Size = new System.Drawing.Size(20, 19);
             this.labelYRel.TabIndex = 6;
@@ -809,7 +943,7 @@ namespace RVD_Simulation
             // 
             this.labelM5.AutoSize = true;
             this.labelM5.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelM5.Location = new System.Drawing.Point(615, 112);
+            this.labelM5.Location = new System.Drawing.Point(262, 216);
             this.labelM5.Name = "labelM5";
             this.labelM5.Size = new System.Drawing.Size(60, 19);
             this.labelM5.TabIndex = 20;
@@ -818,7 +952,7 @@ namespace RVD_Simulation
             // tBoxYRel
             // 
             this.tBoxYRel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxYRel.Location = new System.Drawing.Point(149, 105);
+            this.tBoxYRel.Location = new System.Drawing.Point(136, 79);
             this.tBoxYRel.Name = "tBoxYRel";
             this.tBoxYRel.Size = new System.Drawing.Size(119, 29);
             this.tBoxYRel.TabIndex = 7;
@@ -829,7 +963,7 @@ namespace RVD_Simulation
             // 
             this.labelM4.AutoSize = true;
             this.labelM4.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelM4.Location = new System.Drawing.Point(613, 56);
+            this.labelM4.Location = new System.Drawing.Point(260, 173);
             this.labelM4.Name = "labelM4";
             this.labelM4.Size = new System.Drawing.Size(60, 19);
             this.labelM4.TabIndex = 19;
@@ -839,7 +973,7 @@ namespace RVD_Simulation
             // 
             this.labelZRel.AutoSize = true;
             this.labelZRel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelZRel.Location = new System.Drawing.Point(123, 164);
+            this.labelZRel.Location = new System.Drawing.Point(75, 130);
             this.labelZRel.Name = "labelZRel";
             this.labelZRel.Size = new System.Drawing.Size(20, 19);
             this.labelZRel.TabIndex = 8;
@@ -849,7 +983,7 @@ namespace RVD_Simulation
             // 
             this.labelM3.AutoSize = true;
             this.labelM3.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelM3.Location = new System.Drawing.Point(274, 162);
+            this.labelM3.Location = new System.Drawing.Point(261, 128);
             this.labelM3.Name = "labelM3";
             this.labelM3.Size = new System.Drawing.Size(24, 19);
             this.labelM3.TabIndex = 18;
@@ -858,7 +992,7 @@ namespace RVD_Simulation
             // tBoxZRel
             // 
             this.tBoxZRel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxZRel.Location = new System.Drawing.Point(149, 157);
+            this.tBoxZRel.Location = new System.Drawing.Point(136, 123);
             this.tBoxZRel.Name = "tBoxZRel";
             this.tBoxZRel.Size = new System.Drawing.Size(119, 29);
             this.tBoxZRel.TabIndex = 9;
@@ -869,7 +1003,7 @@ namespace RVD_Simulation
             // 
             this.labelM2.AutoSize = true;
             this.labelM2.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelM2.Location = new System.Drawing.Point(274, 109);
+            this.labelM2.Location = new System.Drawing.Point(261, 83);
             this.labelM2.Name = "labelM2";
             this.labelM2.Size = new System.Drawing.Size(24, 19);
             this.labelM2.TabIndex = 17;
@@ -879,7 +1013,7 @@ namespace RVD_Simulation
             // 
             this.labelXvelRel.AutoSize = true;
             this.labelXvelRel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelXvelRel.Location = new System.Drawing.Point(394, 56);
+            this.labelXvelRel.Location = new System.Drawing.Point(41, 173);
             this.labelXvelRel.Name = "labelXvelRel";
             this.labelXvelRel.Size = new System.Drawing.Size(88, 19);
             this.labelXvelRel.TabIndex = 10;
@@ -889,7 +1023,7 @@ namespace RVD_Simulation
             // 
             this.labelM1.AutoSize = true;
             this.labelM1.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelM1.Location = new System.Drawing.Point(273, 54);
+            this.labelM1.Location = new System.Drawing.Point(260, 41);
             this.labelM1.Name = "labelM1";
             this.labelM1.Size = new System.Drawing.Size(24, 19);
             this.labelM1.TabIndex = 16;
@@ -898,7 +1032,7 @@ namespace RVD_Simulation
             // tBoxXvelRel
             // 
             this.tBoxXvelRel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxXvelRel.Location = new System.Drawing.Point(489, 49);
+            this.tBoxXvelRel.Location = new System.Drawing.Point(136, 166);
             this.tBoxXvelRel.Name = "tBoxXvelRel";
             this.tBoxXvelRel.Size = new System.Drawing.Size(119, 29);
             this.tBoxXvelRel.TabIndex = 11;
@@ -908,7 +1042,7 @@ namespace RVD_Simulation
             // tBoxZvelRel
             // 
             this.tBoxZvelRel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxZvelRel.Location = new System.Drawing.Point(489, 157);
+            this.tBoxZvelRel.Location = new System.Drawing.Point(136, 252);
             this.tBoxZvelRel.Name = "tBoxZvelRel";
             this.tBoxZvelRel.Size = new System.Drawing.Size(119, 29);
             this.tBoxZvelRel.TabIndex = 15;
@@ -919,7 +1053,7 @@ namespace RVD_Simulation
             // 
             this.labelYVelRel.AutoSize = true;
             this.labelYVelRel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelYVelRel.Location = new System.Drawing.Point(394, 112);
+            this.labelYVelRel.Location = new System.Drawing.Point(41, 216);
             this.labelYVelRel.Name = "labelYVelRel";
             this.labelYVelRel.Size = new System.Drawing.Size(88, 19);
             this.labelYVelRel.TabIndex = 12;
@@ -929,7 +1063,7 @@ namespace RVD_Simulation
             // 
             this.labelZVelRel.AutoSize = true;
             this.labelZVelRel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelZVelRel.Location = new System.Drawing.Point(394, 164);
+            this.labelZVelRel.Location = new System.Drawing.Point(41, 259);
             this.labelZVelRel.Name = "labelZVelRel";
             this.labelZVelRel.Size = new System.Drawing.Size(88, 19);
             this.labelZVelRel.TabIndex = 14;
@@ -938,7 +1072,7 @@ namespace RVD_Simulation
             // tBoxYvelRel
             // 
             this.tBoxYvelRel.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxYvelRel.Location = new System.Drawing.Point(489, 105);
+            this.tBoxYvelRel.Location = new System.Drawing.Point(136, 209);
             this.tBoxYvelRel.Name = "tBoxYvelRel";
             this.tBoxYvelRel.Size = new System.Drawing.Size(119, 29);
             this.tBoxYvelRel.TabIndex = 13;
@@ -947,6 +1081,9 @@ namespace RVD_Simulation
             // 
             // gBoxDisturbanceChaser
             // 
+            this.gBoxDisturbanceChaser.Controls.Add(this.tBoxDragCha);
+            this.gBoxDisturbanceChaser.Controls.Add(this.label2);
+            this.gBoxDisturbanceChaser.Controls.Add(this.cBoxDragCha);
             this.gBoxDisturbanceChaser.Font = new System.Drawing.Font("맑은 고딕", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.gBoxDisturbanceChaser.Location = new System.Drawing.Point(17, 324);
             this.gBoxDisturbanceChaser.Name = "gBoxDisturbanceChaser";
@@ -954,6 +1091,38 @@ namespace RVD_Simulation
             this.gBoxDisturbanceChaser.TabIndex = 22;
             this.gBoxDisturbanceChaser.TabStop = false;
             this.gBoxDisturbanceChaser.Text = "Disturbance";
+            // 
+            // tBoxDragCha
+            // 
+            this.tBoxDragCha.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tBoxDragCha.Location = new System.Drawing.Point(554, 34);
+            this.tBoxDragCha.Name = "tBoxDragCha";
+            this.tBoxDragCha.Size = new System.Drawing.Size(158, 29);
+            this.tBoxDragCha.TabIndex = 33;
+            this.tBoxDragCha.Text = "0";
+            this.tBoxDragCha.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("돋움", 14.84536F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(391, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(143, 20);
+            this.label2.TabIndex = 32;
+            this.label2.Text = "Drag Coefficient";
+            // 
+            // cBoxDragCha
+            // 
+            this.cBoxDragCha.AutoSize = true;
+            this.cBoxDragCha.Font = new System.Drawing.Font("돋움", 14.84536F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cBoxDragCha.Location = new System.Drawing.Point(42, 39);
+            this.cBoxDragCha.Name = "cBoxDragCha";
+            this.cBoxDragCha.Size = new System.Drawing.Size(178, 24);
+            this.cBoxDragCha.TabIndex = 3;
+            this.cBoxDragCha.Text = "Atmospheric Drag";
+            this.cBoxDragCha.UseVisualStyleBackColor = true;
+            this.cBoxDragCha.CheckedChanged += new System.EventHandler(this.cBoxDragCha_CheckedChanged);
             // 
             // btnStart
             // 
@@ -1057,6 +1226,8 @@ namespace RVD_Simulation
             this.gBoxAddSAT.PerformLayout();
             this.gBoxPosVel.ResumeLayout(false);
             this.gBoxPosVel.PerformLayout();
+            this.gBoxDisturbanceTarget.ResumeLayout(false);
+            this.gBoxDisturbanceTarget.PerformLayout();
             this.gBoxSimulation.ResumeLayout(false);
             this.gBoxManeuver.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Maneuver)).EndInit();
@@ -1064,6 +1235,8 @@ namespace RVD_Simulation
             this.gBoxChaser.PerformLayout();
             this.gBoxRelPOSVEL.ResumeLayout(false);
             this.gBoxRelPOSVEL.PerformLayout();
+            this.gBoxDisturbanceChaser.ResumeLayout(false);
+            this.gBoxDisturbanceChaser.PerformLayout();
             this.gBoxTime2.ResumeLayout(false);
             this.gBoxTime2.PerformLayout();
             this.ResumeLayout(false);
@@ -1153,11 +1326,25 @@ namespace RVD_Simulation
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Epoch;
         private System.Windows.Forms.Button btnManeuverAdd;
         private System.Windows.Forms.DataGridView dataGridView_Maneuver;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnManeuverDel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Time;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_vx;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_vy;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_vz;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnManeuverDel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Duration;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Type;
+        private System.Windows.Forms.TextBox tBoxDragTgt;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox cBoxDragTgt;
+        private System.Windows.Forms.TextBox tBoxDragCha;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox cBoxDragCha;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tBoxCrossSecTgt;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tBoxCorssSecCha;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

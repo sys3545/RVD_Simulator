@@ -18,9 +18,10 @@ namespace RVD_Simulation
         MLApp.MLApp matlab; // matlab 연동 객체
         private int ExcuteNum; // 시뮬레이션 실행횟수      
         ManeuverList[] maneuverList; // 기동정보 리스트
-        int NumOfMane = 0; // 기동 횟수
-        const int maxNum = 5; // 최대 기동 횟수
+        int NumOfMane = 0; // 현재 시뮬레이션 기동 횟수
+        const int maxNum = 10; // 최대 기동 횟수
         double x0; double y0; double z0; double vx0; double vy0; double vz0; double angleVel; double maxTime; // 초기 정보
+        double rx0; double ry0; double rz0; // 섭동 정보
         object result = null; // 매트랩 결과저장 변수
         object[] Res = null; // 매트랩 결과저장 변수
 
@@ -51,7 +52,7 @@ namespace RVD_Simulation
             //matlab.Visible = 0; // Invisible  ( 나중에 주석 풀어야함)            
         }
         
-        public void Simulation(double x0, double y0, double z0, double vx0, double vy0, double vz0, double angleVel, DateTime start, DateTime end, double maxTime, ManeuverList[] maneuverList, int NumOfMane)
+        public void Simulation(double x0, double y0, double z0, double vx0, double vy0, double vz0, double rx0, double ry0, double rz0, double angleVel, DateTime start, DateTime end, double maxTime, ManeuverList[] maneuverList, int NumOfMane)
         {
             // 최초 실행 시 윈도우 적용
             if (ExcuteNum == 0)
@@ -73,12 +74,13 @@ namespace RVD_Simulation
                     MessageBox.Show("매트랩을 찾을 수 없습니다.");
                 }
             }           
-            // data save
-            dateTimePicker_Start.Value = start;    dateTimePicker_End.Value = end;
+
+            //////////////////////////////////////////////////// data save ////////////////////////////////////////////////////////////
+            dateTimePicker_Start.Value = start;    dateTimePicker_End.Value = end; // simulation time   
             this.x0 = x0; this.y0 = y0; this.z0 = z0; this.vx0 = vx0; this.vy0 = vy0; this.vz0 = vz0; this.angleVel = angleVel; this.maxTime = maxTime;
+            this.rx0 = rx0; this.ry0 = ry0; this.rz0 = rz0;
             this.NumOfMane = NumOfMane;
-            // track bar
-            trackBarTime.Maximum = Convert.ToInt32(maxTime);
+            trackBarTime.Maximum = Convert.ToInt32(maxTime); // track bar
 
             ////////////////////////////////////////////////////// matlab /////////////////////////////////////////////////////////////      
             matlab.Execute(@"cd C:\Users\sys35\source\repos\RVD_Simulation\RVD_Simulation"); // 매트랩 함수 있는 폴더로 이동          
@@ -99,7 +101,7 @@ namespace RVD_Simulation
                 else
                 {
                     curStartTime = maneuverList[i].time;
-                    initialValues = matlabGetXYZEnd();
+                    initialValues = matlabGetXYZEnd(); // 이전 기동의 최종 결과값 받아오기
                     // impulse burn  ( 나중에 여기서 burn type 처리할수도?)
                     initialValues[3] += maneuverList[i].dvx;
                     initialValues[4] += maneuverList[i].dvy;
@@ -110,7 +112,7 @@ namespace RVD_Simulation
                 else
                     curEndTime = maneuverList[i + 1].time;
                 //simulation
-                matlab.Feval("getXYZ", 1, out result, initialValues[0], initialValues[1], initialValues[2], initialValues[3], initialValues[4], initialValues[5], this.angleVel, curStartTime, curEndTime);
+                matlab.Feval("getMotion", 1, out result, initialValues[0], initialValues[1], initialValues[2], initialValues[3], initialValues[4], initialValues[5], this.rx0, this.ry0, this.rz0, this.angleVel, curStartTime, curEndTime);
                 Res = result as object[]; // c#에 매트랩 함수 결과 저장
                 matlabTempDataSave(); // 함수 결과를 매트랩 워크스테이션에 저장
                 matlabMakeFinalXYZ(i); // 최종 결과 만들기
@@ -156,7 +158,6 @@ namespace RVD_Simulation
         // close button click event
         private void SimulationForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //MessageBox.Show("종료하시겠습니까?");
             matlab.Execute("exit");
         }
 
@@ -175,7 +176,7 @@ namespace RVD_Simulation
             result = null;
             matlab.Execute("close(fig); fig = figure(1);");
             Thread.Sleep(2000);
-            Simulation(x0, y0, z0, vx0, vy0, vz0, angleVel, dateTimePicker_Start.Value, dateTimePicker_End.Value, maxTime, maneuverList, NumOfMane);
+            Simulation(x0, y0, z0, vx0, vy0, vz0, rx0, ry0, rz0, angleVel, dateTimePicker_Start.Value, dateTimePicker_End.Value, maxTime, maneuverList, NumOfMane);
             tBox_TESTMAIN.Text = Convert.ToString("donerefresh");
         }
 

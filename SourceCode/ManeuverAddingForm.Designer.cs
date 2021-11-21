@@ -42,12 +42,17 @@ namespace RVD_Simulation
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tBoxDuration = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cBoxImpulse = new System.Windows.Forms.CheckBox();
+            this.cBoxContinue = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnOK
             // 
             this.btnOK.Font = new System.Drawing.Font("맑은 고딕", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnOK.Location = new System.Drawing.Point(281, 348);
+            this.btnOK.Location = new System.Drawing.Point(281, 384);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(95, 33);
             this.btnOK.TabIndex = 0;
@@ -59,7 +64,7 @@ namespace RVD_Simulation
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(234, 86);
+            this.label4.Location = new System.Drawing.Point(234, 118);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 19);
             this.label4.TabIndex = 33;
@@ -69,7 +74,7 @@ namespace RVD_Simulation
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(234, 237);
+            this.label3.Location = new System.Drawing.Point(234, 269);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 19);
             this.label3.TabIndex = 32;
@@ -79,7 +84,7 @@ namespace RVD_Simulation
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(234, 189);
+            this.label2.Location = new System.Drawing.Point(234, 221);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 19);
             this.label2.TabIndex = 31;
@@ -89,7 +94,7 @@ namespace RVD_Simulation
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(234, 138);
+            this.label1.Location = new System.Drawing.Point(234, 170);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 19);
             this.label1.TabIndex = 30;
@@ -98,7 +103,7 @@ namespace RVD_Simulation
             // tBoxDelZ
             // 
             this.tBoxDelZ.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxDelZ.Location = new System.Drawing.Point(143, 234);
+            this.tBoxDelZ.Location = new System.Drawing.Point(143, 266);
             this.tBoxDelZ.Name = "tBoxDelZ";
             this.tBoxDelZ.Size = new System.Drawing.Size(85, 29);
             this.tBoxDelZ.TabIndex = 29;
@@ -108,7 +113,7 @@ namespace RVD_Simulation
             // tBoxDelY
             // 
             this.tBoxDelY.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxDelY.Location = new System.Drawing.Point(143, 186);
+            this.tBoxDelY.Location = new System.Drawing.Point(143, 218);
             this.tBoxDelY.Name = "tBoxDelY";
             this.tBoxDelY.Size = new System.Drawing.Size(85, 29);
             this.tBoxDelY.TabIndex = 28;
@@ -118,7 +123,7 @@ namespace RVD_Simulation
             // tBoxDelX
             // 
             this.tBoxDelX.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxDelX.Location = new System.Drawing.Point(143, 135);
+            this.tBoxDelX.Location = new System.Drawing.Point(143, 167);
             this.tBoxDelX.Name = "tBoxDelX";
             this.tBoxDelX.Size = new System.Drawing.Size(85, 29);
             this.tBoxDelX.TabIndex = 27;
@@ -128,7 +133,7 @@ namespace RVD_Simulation
             // tBoxManeTime
             // 
             this.tBoxManeTime.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tBoxManeTime.Location = new System.Drawing.Point(143, 83);
+            this.tBoxManeTime.Location = new System.Drawing.Point(143, 115);
             this.tBoxManeTime.Name = "tBoxManeTime";
             this.tBoxManeTime.Size = new System.Drawing.Size(85, 29);
             this.tBoxManeTime.TabIndex = 26;
@@ -139,7 +144,7 @@ namespace RVD_Simulation
             // 
             this.lableburmTime.AutoSize = true;
             this.lableburmTime.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lableburmTime.Location = new System.Drawing.Point(90, 86);
+            this.lableburmTime.Location = new System.Drawing.Point(90, 118);
             this.lableburmTime.Name = "lableburmTime";
             this.lableburmTime.Size = new System.Drawing.Size(47, 19);
             this.lableburmTime.TabIndex = 34;
@@ -149,7 +154,7 @@ namespace RVD_Simulation
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(90, 138);
+            this.label5.Location = new System.Drawing.Point(90, 170);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 19);
             this.label5.TabIndex = 35;
@@ -159,7 +164,7 @@ namespace RVD_Simulation
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(90, 189);
+            this.label6.Location = new System.Drawing.Point(90, 221);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(48, 19);
             this.label6.TabIndex = 36;
@@ -169,17 +174,79 @@ namespace RVD_Simulation
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(90, 237);
+            this.label7.Location = new System.Drawing.Point(90, 269);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 19);
             this.label7.TabIndex = 37;
             this.label7.Text = "△Vz";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(65, 318);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(74, 19);
+            this.label8.TabIndex = 38;
+            this.label8.Text = "Duration";
+            // 
+            // tBoxDuration
+            // 
+            this.tBoxDuration.Enabled = false;
+            this.tBoxDuration.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tBoxDuration.Location = new System.Drawing.Point(143, 314);
+            this.tBoxDuration.Name = "tBoxDuration";
+            this.tBoxDuration.Size = new System.Drawing.Size(85, 29);
+            this.tBoxDuration.TabIndex = 39;
+            this.tBoxDuration.Text = "0";
+            this.tBoxDuration.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("돋움", 14.10309F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(234, 316);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(38, 19);
+            this.label9.TabIndex = 40;
+            this.label9.Text = "sec";
+            // 
+            // cBoxImpulse
+            // 
+            this.cBoxImpulse.AutoSize = true;
+            this.cBoxImpulse.Checked = true;
+            this.cBoxImpulse.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cBoxImpulse.Font = new System.Drawing.Font("맑은 고딕", 11.13402F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cBoxImpulse.Location = new System.Drawing.Point(72, 50);
+            this.cBoxImpulse.Name = "cBoxImpulse";
+            this.cBoxImpulse.Size = new System.Drawing.Size(92, 24);
+            this.cBoxImpulse.TabIndex = 41;
+            this.cBoxImpulse.Text = "Impulsive";
+            this.cBoxImpulse.UseVisualStyleBackColor = true;
+            this.cBoxImpulse.CheckedChanged += new System.EventHandler(this.cBoxImpulse_CheckedChanged);
+            // 
+            // cBoxContinue
+            // 
+            this.cBoxContinue.AutoSize = true;
+            this.cBoxContinue.Font = new System.Drawing.Font("맑은 고딕", 11.13402F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cBoxContinue.Location = new System.Drawing.Point(209, 50);
+            this.cBoxContinue.Name = "cBoxContinue";
+            this.cBoxContinue.Size = new System.Drawing.Size(107, 24);
+            this.cBoxContinue.TabIndex = 42;
+            this.cBoxContinue.Text = "Continuous";
+            this.cBoxContinue.UseVisualStyleBackColor = true;
+            this.cBoxContinue.CheckedChanged += new System.EventHandler(this.cBoxContinue_CheckedChanged);
+            // 
             // ManeuverAddingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(388, 393);
+            this.ClientSize = new System.Drawing.Size(388, 429);
+            this.Controls.Add(this.cBoxContinue);
+            this.Controls.Add(this.cBoxImpulse);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.tBoxDuration);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -195,6 +262,7 @@ namespace RVD_Simulation
             this.Controls.Add(this.btnOK);
             this.Name = "ManeuverAddingForm";
             this.Text = "ManeuverAdding";
+            this.Load += new System.EventHandler(this.ManeuverAddingForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,5 +283,10 @@ namespace RVD_Simulation
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox tBoxDuration;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckBox cBoxImpulse;
+        private System.Windows.Forms.CheckBox cBoxContinue;
     }
 }

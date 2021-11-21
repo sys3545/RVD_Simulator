@@ -61,7 +61,8 @@ namespace RVD_Simulation
 
 
         ///////////////////////////////////////////////////// button event ////////////////////////////////////////////////////////////////
-        private void btnAdd_Click(object sender, EventArgs e) // 인공위성 생성버튼
+        // 인공위성 생성버튼
+        private void btnAdd_Click(object sender, EventArgs e) 
         {
             if (this.NumOfSat < maxNum - 1)
             {
@@ -70,6 +71,7 @@ namespace RVD_Simulation
                 SAT[NumOfSat].name = Convert.ToString(tBoxName.Text); // Name 저장
                 SAT[NumOfSat].number = NumOfSat; // Number 저장
                 SAT[NumOfSat].mass = Convert.ToDouble(tBoxMass.Text); // mass 저장
+                SAT[NumOfSat].crossSection = Convert.ToDouble(tBoxCrossSecTgt.Text); // 단면적 저장
                 SAT[NumOfSat].epoch = dateTimePicker_Epoch.Value; // epch time 저장
 
                 SAT[NumOfSat].x = Convert.ToDouble(tBoxX.Text); // position, velocity 저장           
@@ -78,6 +80,8 @@ namespace RVD_Simulation
                 SAT[NumOfSat].xvel = Convert.ToDouble(tBoxXvel.Text);
                 SAT[NumOfSat].yvel = Convert.ToDouble(tBoxYvel.Text);
                 SAT[NumOfSat].zvel = Convert.ToDouble(tBoxZvel.Text);
+
+                SAT[NumOfSat].dragCoeff = Convert.ToDouble(tBoxDragTgt.Text); // perturbation values 저장
               
                 SAT[NumOfSat].makePosVector();
                 SAT[NumOfSat].makeVelVector();
@@ -93,7 +97,8 @@ namespace RVD_Simulation
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e) // 인공위성 삭제버튼
+        // 인공위성 삭제버튼
+        private void btnDelete_Click(object sender, EventArgs e)
         {
             if (this.NumOfSat > 0)
             {
@@ -102,11 +107,13 @@ namespace RVD_Simulation
             }
         }
 
-        private void btnStart_Click(object sender, EventArgs e) // 시뮬레이션 시작버튼
+        // 시뮬레이션 시작버튼
+        private void btnStart_Click(object sender, EventArgs e)
         {
             double diff; // 시간차이
             int SelectNum; // 선택된 타겟번호
-            double x0; double y0; double z0; double vx0; double vy0; double vz0;
+            double x0; double y0; double z0; double vx0; double vy0; double vz0; // 초기값
+            double rx0 = 0; double ry0 = 0; double rz0 = 0; // 초기값(섭동, 추력)
 
             // 시간차이 구하기
             diff = Calculator.FindDiffTime(dateTimePicker_StartSimul.Value, dateTimePicker_EndSimul.Value);
@@ -121,19 +128,26 @@ namespace RVD_Simulation
             vy0 = Convert.ToDouble(tBoxYvelRel.Text);
             vz0 = Convert.ToDouble(tBoxZvelRel.Text);
 
+            // 섭동 처리 ( 항력, 복사압, 비대칭중력 ,... )
+            if (cBoxDragCha.Checked)
+                rx0 += Calculator.CalcurateDrag(SAT[SelectNum], Convert.ToDouble(tBoxMass_Chaser.Text), Convert.ToDouble(tBoxDragCha.Text), Convert.ToDouble(tBoxCorssSecCha.Text));
+
             // 시뮬레이션 시작
             if (diff > 0)
-                SimulationForm.Simulation(x0, y0, z0, vx0, vy0, vz0, SAT[SelectNum].angleVel, dateTimePicker_StartSimul.Value, dateTimePicker_EndSimul.Value, diff, maneuverList, NumOfMane);
+                SimulationForm.Simulation(x0, y0, z0, vx0, vy0, vz0, rx0, ry0, rz0, SAT[SelectNum].angleVel, dateTimePicker_StartSimul.Value, dateTimePicker_EndSimul.Value, diff, maneuverList, NumOfMane);
             else
                 MessageBox.Show("시뮬레이션 시간이 너무 짧습니다.");
+
+            tBoxTest.Text = Convert.ToString(rx0);
         }
 
-        private void btnManeuverAdd_Click(object sender, EventArgs e) // Manever Add button
+        // Manever Add button
+        private void btnManeuverAdd_Click(object sender, EventArgs e)
         {
             if (this.NumOfMane < maxNum - 1)
             {
                 maneuverAddingForm = new ManeuverAddingForm();
-                maneuverAddingForm.Owner = this; // 자식폼의 Owner 선언
+                maneuverAddingForm.Owner = this; // 자식폼의 Owner로 선언
 
                 if (maneuverAddingForm.ShowDialog() == DialogResult.OK)
                 {                   
@@ -144,19 +158,37 @@ namespace RVD_Simulation
                     string dvx = dataGridView_Maneuver.Rows[NumOfMane - 1].Cells[1].Value.ToString(); // 데이터 따오기 (dvx)
                     string dvy = dataGridView_Maneuver.Rows[NumOfMane - 1].Cells[2].Value.ToString(); // 데이터 따오기 (dvy)
                     string dvz = dataGridView_Maneuver.Rows[NumOfMane - 1].Cells[3].Value.ToString(); // 데이터 따오기 (dvz)
-                    maneuverList[NumOfMane].fill_Infomation(time, dvx, dvy, dvz);
+                    string duration = dataGridView_Maneuver.Rows[NumOfMane - 1].Cells[4].Value.ToString(); // 데이터 따오기 (duration)
+                    string type = dataGridView_Maneuver.Rows[NumOfMane - 1].Cells[5].Value.ToString(); // 데이터 따오기 (duration)
+                    maneuverList[NumOfMane].fill_Infomation(time, dvx, dvy, dvz, duration, type);
                 }
             }
         }
 
-        private void btnManeuverDel_Click(object sender, EventArgs e) // Manever Delete button
+        // Manever Delete button
+        private void btnManeuverDel_Click(object sender, EventArgs e)
         {
             if (this.NumOfMane > 0)
             {
                 dataGridView_Maneuver.Rows.Remove(dataGridView_Maneuver.Rows[NumOfMane - 1]); // 리스트에서 최근 기동 삭제
                 this.NumOfMane -= 1; // 기동 횟수 감소               
             }
-        }           
+        }
+
+
+
+        ///////////////////////////////////////////////////// checkbox event ////////////////////////////////////////////////////////////////
+        private void cBoxDragTgt_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cBoxDragTgt.Checked) cBoxDragCha.Checked = true;
+            else cBoxDragCha.Checked = false;
+        }
+
+        private void cBoxDragCha_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cBoxDragCha.Checked) cBoxDragTgt.Checked = true;
+            else cBoxDragTgt.Checked = false;
+        }
     }
 
 
@@ -173,11 +205,16 @@ namespace RVD_Simulation
         public double x = 0; public double y = 0; public double z = 0; // position (km)
         public double xvel = 0; public double yvel = 0; public double zvel = 0; // velocity (m)
         public Vector3 posvector;  public Vector3 velvector; // vectors
+
+        public double crossSection = 0;
         public double angleVel = 0; // (rad/sec)
         public double period = 0; // (sec)
 
         // 위성 궤도요소
         public float a = 0; public float e = 0; public float i = 0; public float RAAN = 0; public float w = 0; public float TA = 0; // 궤도 6요소  
+
+        // 위성 섭동관련 변수
+        public double dragCoeff = 0;
 
         public Satellite()
         {
@@ -215,18 +252,21 @@ namespace RVD_Simulation
         public double dvx;
         public double dvy;
         public double dvz;
-
+        public int type;
+        public double duration;
         public ManeuverList()
         {
-            this.time = 0;  this.dvx = 0;  this.dvy = 0;  this.dvz = 0;
+            this.time = 0;  this.dvx = 0;  this.dvy = 0;  this.dvz = 0; this.type = 0; this.duration = 0;
         }
 
-        public void fill_Infomation(string time, string dvx, string dvy, string dvz)
+        public void fill_Infomation(string time, string dvx, string dvy, string dvz, string duration, string type)
         {
             this.time = Convert.ToDouble(time);
             this.dvx = Convert.ToDouble(dvx);
             this.dvy = Convert.ToDouble(dvy);
             this.dvz = Convert.ToDouble(dvz);
+            this.duration = Convert.ToDouble(duration);
+            this.type = Convert.ToInt32(type);
         }       
     }
 
@@ -303,6 +343,19 @@ namespace RVD_Simulation
         {
             SAT.period = 2 * Math.PI * Math.Sqrt(Math.Pow(SAT.a, 3) / Mu);
             SAT.angleVel = (2 * Math.PI) / SAT.period;
+        }
+
+        public static double CalcurateDrag(Satellite Target, double chaMass, double chaDragCoeff, double chaCross)
+        {
+            double atmDencity = 0.00000000001; // 1 * 10^-11 [kg/m^3]
+            double r = Target.a * 1000.0; // km -> m            
+            double Cbt = Target.mass / (Target.dragCoeff * Target.crossSection);
+            //double Cbt = 100000000;
+            double Cbc = chaMass / (chaDragCoeff * chaCross);
+            //double Cbc = 215;
+            double rx = -(atmDencity / 2) * Math.Pow(Target.angleVel, 2) * Math.Pow(r, 2) * (1 / Cbc) * (1 - (Cbc / Cbt));
+           
+            return rx;
         }
     }
 }
